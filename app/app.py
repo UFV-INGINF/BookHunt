@@ -26,7 +26,7 @@ def index():
     libros.sort(key=lambda libro: libro.total)
 
     if request.method == 'POST':
-        query = request.form.get('nombre_libro', '').lower()  # Obtener el término de búsqueda
+        query = request.form.get('nombre_libro', '').lower()
         
         libros = [libro for libro in libros if query in libro.nombre.lower()]
 

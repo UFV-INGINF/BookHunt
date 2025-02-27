@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Hunt</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
 
     <main>
         <div class="buscador">
             <form action="/" method="POST">
-                <input type="text" name="nombre_libro" placeholder="Buscar por nombre de libro" />
+                <input type="text" name="isbn_libro" placeholder="Buscar por ISBN" />
                 <button type="submit">Buscar</button>
             </form>
         </div>
@@ -22,16 +22,17 @@
                     <div class="book-card">
                         <h3>{{ libro.nombre }}</h3>
                         <p><strong>Tienda:</strong> {{ libro.tienda }}</p>
-                        <p><strong>Precio:</strong> ${{ libro.precio }}</p>
-                        <p><strong>Gastos de Envío:</strong> ${{ libro.gastos_envio }}</p>
-                        <p><strong>Total:</strong> ${{ libro.total }}</p>
+                        <p><strong>Precio:</strong> {{ libro.precio }} €</p>
+                        <p><strong>ISBN:</strong> {{ libro.isbn }}</p>
+                        <p><strong>Gastos de Envío:</strong> {{ libro.gastos_envio }} €</p>
+                        <p><strong>Total:</strong> {{ libro.total }} €</p>
                     </div>
                 {% endfor %}
             {% else %}
-                <p>No se encontraron libros con ese nombre.</p>
+                <p>No se encontraron libros con ese ISBN.</p>
             {% endif %}
         </div>
     </main>
-    
+
 </body>
 </html>

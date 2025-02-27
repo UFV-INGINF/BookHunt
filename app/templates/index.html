@@ -9,6 +9,9 @@
 <body>
 
     <main>
+        <div class="header-container">
+            <h1>Book Hunt</h1>
+        </div>
         <div class="buscador">
             <form action="/" method="POST">
                 <input type="text" name="isbn_libro" placeholder="Buscar por ISBN" />
@@ -19,14 +22,16 @@
         <div class="book-container">
             {% if libros %}
                 {% for libro in libros %}
-                    <div class="book-card">
-                        <h3>{{ libro.nombre }}</h3>
-                        <p><strong>Tienda:</strong> {{ libro.tienda }}</p>
-                        <p><strong>Precio:</strong> {{ libro.precio }} €</p>
-                        <p><strong>ISBN:</strong> {{ libro.isbn }}</p>
-                        <p><strong>Gastos de Envío:</strong> {{ libro.gastos_envio }} €</p>
-                        <p><strong>Total:</strong> {{ libro.total }} €</p>
-                    </div>
+                    <a href="{{ libro.enlace }}" class="book-card-link">
+                        <div class="book-card">
+                            <h3>{{ libro.nombre }}</h3>
+                            <p><strong>Tienda:</strong> {{ libro.tienda }}</p>
+                            <p><strong>Precio:</strong> {{ libro.precio }} €</p>
+                            <p><strong>ISBN:</strong> {{ libro.isbn }}</p>
+                            <p class="shipping"><strong>Gastos de Envío:</strong> {{ libro.gastos_envio }} €</p>
+                            <p class="total"><strong>Total:</strong> {{ libro.total }} €</p>
+                        </div>
+                    </a>
                 {% endfor %}
             {% else %}
                 <p>No se encontraron libros con ese ISBN.</p>

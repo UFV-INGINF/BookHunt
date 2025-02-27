@@ -128,3 +128,15 @@ main input[type="text"]::placeholder {
     font-size: 16px;
     margin-top: 15px;
 }
+
+.book-card-link {
+    text-decoration: none;
+    /* Quitar subrayado */
+    color: inherit;
+    /* Heredar el color del texto de la tarjeta */
+}
+
+.book-card-link:hover {
+    text-decoration: none;
+    /* Asegurar que no tenga subrayado en hover */
+}

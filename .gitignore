@@ -169,3 +169,45 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Anaconda specific
+anaconda-client/
+conda-bld/
+conda-meta/
+.conda/
+*-env/
+.anaconda/
+.condarc
+conda-env/
+environment.yml
+
+# Browser automation (Playwright/Selenium)
+**/node_modules/
+**/browser-data/
+**/browser_profiles/
+**/screenshots/
+**/.playwright-cache/
+**/.playwright/
+**/browsers/
+playwright-report/
+playwright/.cache/
+test-results/
+
+# Cache directories
+.scrapy_cache/
+.http_cache/
+.requests-cache/
+.webcache/
+
+# Temporary files
+data/
+raw_data/
+extracted_data/
+temp/
+tmp/
+output/
+results/
+*.csv
+*.json
+*.xlsx
+*.db

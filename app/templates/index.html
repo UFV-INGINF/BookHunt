@@ -1,43 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Hunt</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-</head>
-<body>
-
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
     <main>
-        <div class="header-container">
-            <h1>Book Hunt</h1>
-        </div>
-        <div class="buscador">
-            <form action="/" method="POST">
-                <input type="text" name="isbn_libro" placeholder="Buscar por ISBN" />
-                <button type="submit">Buscar</button>
-            </form>
-        </div>
-
-        <div class="book-container">
-            {% if libros %}
-                {% for libro in libros %}
-                    <a href="{{ libro.enlace }}" class="book-card-link">
-                        <div class="book-card">
-                            <h3>{{ libro.nombre }}</h3>
-                            <p><strong>Tienda:</strong> {{ libro.tienda }}</p>
-                            <p><strong>Precio:</strong> {{ libro.precio }} €</p>
-                            <p><strong>ISBN:</strong> {{ libro.isbn }}</p>
-                            <p class="shipping"><strong>Gastos de Envío:</strong> {{ libro.gastos_envio }} €</p>
-                            <p class="total"><strong>Total:</strong> {{ libro.total }} €</p>
-                        </div>
-                    </a>
-                {% endfor %}
-            {% else %}
-                <p>No se encontraron libros con ese ISBN.</p>
-            {% endif %}
-        </div>
+      <nav></nav>
+      <div class="header">
+        <h2>
+          Encuentra los <span>MEJORES PRECIOS</span> para tus libros favoritos
+        </h2>
+        <h3>
+          Compara precios de libros en múltiples tiendas online en <br />
+          segundos y ahorra dinero en tus compras
+        </h3>
+        <button>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_2_25)">
+              <path
+                d="M2.66668 9.33334C2.54053 9.33377 2.41684 9.2984 2.30998 9.23133C2.20313 9.16426 2.1175 9.06824 2.06305 8.95445C2.00859 8.84065 1.98754 8.71373 2.00235 8.58845C2.01715 8.46316 2.0672 8.34465 2.14668 8.24667L8.74668 1.44667C8.79619 1.38953 8.86365 1.35091 8.938 1.33716C9.01235 1.32341 9.08917 1.33535 9.15584 1.37101C9.22251 1.40667 9.27507 1.46394 9.30491 1.53341C9.33474 1.60289 9.34007 1.68044 9.32002 1.75334L8.04002 5.76667C8.00227 5.86769 7.9896 5.97635 8.00308 6.08334C8.01656 6.19034 8.05579 6.29246 8.11741 6.38096C8.17903 6.46946 8.2612 6.54168 8.35687 6.59145C8.45253 6.64121 8.55885 6.66702 8.66668 6.66667H13.3333C13.4595 6.66624 13.5832 6.70162 13.69 6.76869C13.7969 6.83576 13.8825 6.93177 13.937 7.04557C13.9914 7.15937 14.0125 7.28628 13.9977 7.41157C13.9829 7.53685 13.9328 7.65537 13.8533 7.75334L7.25335 14.5533C7.20384 14.6105 7.13638 14.6491 7.06203 14.6629C6.98768 14.6766 6.91087 14.6647 6.8442 14.629C6.77752 14.5933 6.72496 14.5361 6.69513 14.4666C6.66529 14.3971 6.65996 14.3196 6.68002 14.2467L7.96002 10.2333C7.99776 10.1323 8.01043 10.0237 7.99695 9.91667C7.98347 9.80968 7.94424 9.70755 7.88262 9.61906C7.821 9.53056 7.73883 9.45833 7.64317 9.40857C7.5475 9.3588 7.44119 9.33299 7.33335 9.33334H2.66668Z"
+                stroke="black"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_2_25">
+                <rect width="16" height="16" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          &nbsp &nbsp &nbsp ¡Empieza a Ahorrar!
+        </button>
+      </div>
     </main>
-
-</body>
+    <section class="info">
+      <div class="header-info">
+        <h3>Potentes herramientas de búsqueda</h3>
+        <h5>
+          Encuentra exactamente lo que buscas con nuestras herramientas <br />
+          especializadas
+        </h5>
+        <div class="carrusel-info">
+          <div class="carta-info">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
+                fill="#9333EA"
+              />
+              <path
+                d="M23.6667 34.3333C29.5577 34.3333 34.3333 29.5577 34.3333 23.6667C34.3333 17.7756 29.5577 13 23.6667 13C17.7756 13 13 17.7756 13 23.6667C13 29.5577 17.7756 34.3333 23.6667 34.3333Z"
+                stroke="#FFF9F9"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M37 37L31.2667 31.2667"
+                stroke="#FFF9F9"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h4>Búsqueda por ISBN</h4>
+            <p>
+              Busca libros específicos usando su código ISBN único para
+              encontrar el mejor precio
+            </p>
+            <a href="">Saber más →</a>
+          </div>
+          <div class="carta-info">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
+                fill="#2563EB"
+              />
+              <path
+                d="M25 18.3333V37"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M13 33C12.6464 33 12.3072 32.8595 12.0572 32.6095C11.8071 32.3594 11.6667 32.0203 11.6667 31.6667V14.3333C11.6667 13.9797 11.8071 13.6406 12.0572 13.3905C12.3072 13.1405 12.6464 13 13 13H19.6667C21.0811 13 22.4377 13.5619 23.4379 14.5621C24.4381 15.5623 25 16.9188 25 18.3333C25 16.9188 25.5619 15.5623 26.5621 14.5621C27.5623 13.5619 28.9188 13 30.3333 13H37C37.3536 13 37.6927 13.1405 37.9428 13.3905C38.1928 13.6406 38.3333 13.9797 38.3333 14.3333V31.6667C38.3333 32.0203 38.1928 32.3594 37.9428 32.6095C37.6927 32.8595 37.3536 33 37 33H29C27.9391 33 26.9217 33.4214 26.1716 34.1716C25.4214 34.9217 25 35.9391 25 37C25 35.9391 24.5786 34.9217 23.8284 34.1716C23.0783 33.4214 22.0609 33 21 33H13Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h4>Búsqueda por texto</h4>
+            <p>
+              Encuentra libros por título, autor o palabras clave cuando no
+              conoces el ISBN
+            </p>
+            <a href="">Saber más →</a>
+          </div>
+          <div class="carta-info">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
+                fill="#F59E0B"
+              />
+              <path
+                d="M19.6666 38.3334C20.403 38.3334 21 37.7364 21 37C21 36.2636 20.403 35.6667 19.6666 35.6667C18.9303 35.6667 18.3333 36.2636 18.3333 37C18.3333 37.7364 18.9303 38.3334 19.6666 38.3334Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M34.3333 38.3334C35.0697 38.3334 35.6667 37.7364 35.6667 37C35.6667 36.2636 35.0697 35.6667 34.3333 35.6667C33.597 35.6667 33 36.2636 33 37C33 37.7364 33.597 38.3334 34.3333 38.3334Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11.7333 11.7333H14.4L17.9467 28.2933C18.0768 28.8998 18.4142 29.442 18.901 29.8265C19.3877 30.211 19.9932 30.4138 20.6133 30.4H33.6533C34.2602 30.399 34.8486 30.1911 35.3214 29.8105C35.7941 29.4298 36.1229 28.8994 36.2533 28.3067L38.4533 18.4H15.8267"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h4>Carrito inteligente</h4>
+            <p>
+              Compara precios totales entre tiendas para encontrar la mejor
+              oferta para todos tus libros
+            </p>
+            <a href="">Saber más →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

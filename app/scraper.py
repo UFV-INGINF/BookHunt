@@ -27,7 +27,7 @@ def scrape_casa_del_libro(isbn_libro):
 
         page.goto(url)
 
-        # Esperar hasta que el contenido de la página esté completamente cargado
+        #Esperar hasta que el contenido de la página esté completamente cargado
         page.wait_for_load_state('domcontentloaded', timeout=30000)
 
         libros = []

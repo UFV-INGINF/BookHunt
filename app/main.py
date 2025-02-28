@@ -10,6 +10,7 @@ app=Flask(__name__)
 @app.route('/api/<isbn>', methods=['GET'])
 def get_books(isbn):
     libros = scrapear_libros(isbn)
+
     libros_json = [
         {
             "nombre": libro.nombre,
@@ -51,6 +52,7 @@ def buscar_por_fragmento():
             })
 
     return jsonify(books)
+
 
 if __name__ == '__main__':
     app.run(debug=True,port=8080)

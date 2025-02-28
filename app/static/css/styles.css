@@ -1,39 +1,100 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*, html{
+*,
+html {
     padding: 0;
     margin: 0;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
 }
 
-.header{
-    height: 100vh;
+.navbar {
+    width: 70vw;
+    position: absolute;
+    top: 0;
+}
+
+.navbar ul li {
+    margin-left: 20px;
+}
+
+.navbar-brand {
+    color: white;
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: text;
+}
+
+.navbar-brand:hover {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+.navbar-brand:active {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+.navbar:visited {
+    color: white;
+}
+
+.nav-link {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.header {
+    height: 70vh;
     width: 100vw;
     gap: 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to right,#582C7F, #385A92);
+    background: linear-gradient(to right, #582C7F, #385A92);
     text-align: center;
+    overflow-y: hidden;
 }
 
-.header h2{
-    color: white;
-    font-weight: 900;
-    font-size: 4em;
+.header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 24vh;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to right, #582C7F, #385A92);
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+
+    pointer-events: none;
 }
-.header h2 span{
+
+.header h2 {
+    overflow: hidden;
+    color: white;
+    font-weight: 700;
+    font-size: 3.5em;
+}
+
+.header h2 span {
     color: #FDE047;
 }
 
-.header h3{
+.header h3 {
     color: white;
+    font-weight: 500;
+    font-size: 1.5em;
     padding-bottom: 1.5em;
 }
 
-.header button{
+.header button {
     overflow-x: visible;
     display: flex;
     flex-direction: row;
@@ -44,24 +105,29 @@
     font-weight: 500;
     width: 263px;
     height: 48px;
-    background-color: #FACC15;
+    background-color: #facd15;
     border-color: transparent;
     border-radius: 15px;
+    transition: 0.5s all;
 }
 
-.info .header-info{
-    padding-top: 2em;
-    height: 90vh;
+.header button:hover {
+    background-color: #e3ba18;
+}
+
+
+.info .header-info {
+    padding-top: 4em;
+    padding-bottom: 6em;
     width: 100vw;
     display: flex;
     flex-direction: column;
-    align-items: top;
     background: white;
     text-align: center;
 }
 
-.info .header-info h3{
-    background: linear-gradient(to right,#af3ccc, #4672b9);
+.info .header-info h3 {
+    background: linear-gradient(to right, #af3ccc, #4672b9);
     background-size: cover;
     font-size: 3.5em;
     font-weight: 600;
@@ -70,29 +136,28 @@
     -webkit-text-fill-color: transparent;
 }
 
-.header-info h5{
+.header-info h5 {
     color: #71717A;
     font-size: 1.3em;
     font-weight: 400;
 }
 
-.carrusel-info{
-    margin-left: 4.5vw;
-    margin-top: 7em;
+.carrusel-info {
+    margin-top: 7vh;
     display: flex;
     flex-direction: row;
-    gap: 2em;
-    width: 100vw;
+    justify-content: center;
+    gap: 5em;
 }
 
-.carta-info{
+.carta-info {
     display: flex;
     flex-direction: column;
     text-align: start;
     justify-content: center;
     gap: 1em;
     width: 25em;
-    height: 15em;
+    height: 17em;
     padding: 20px;
     background: linear-gradient(to right, #f4f2ff, #e7ebff);
     border-radius: 20px;
@@ -101,30 +166,33 @@
     border-style: solid;
 }
 
-.carta-info h4{
+.carta-info h4 {
+    overflow: hidden;
     margin-left: 5px;
     font-size: 1.2em;
     font-weight: 600;
 }
 
-.carta-info p{
+.carta-info p {
     margin-left: 5px;
     color: #71717A;
+    overflow: hidden;
 }
 
-.carta-info a{
+.carta-info a {
     margin-left: 5px;
     color: #9333ea;
     text-decoration: none;
     transition: 0.3s;
+    overflow: hidden;
 }
 
-.carta-info a:hover{
+.carta-info a:hover {
     text-decoration: underline;
 }
 
 .carta-info:nth-of-type(2) {
-    background: linear-gradient(to right, #e6f7ff, #d8f9fe); 
+    background: linear-gradient(to right, #e6f7ff, #d8f9fe);
     border-color: #c6dffe;
 }
 
@@ -133,10 +201,207 @@
 }
 
 .carta-info:nth-of-type(3) {
-    background: linear-gradient(to right, #fffbe2, #fefacd); 
+    background: linear-gradient(to right, #fffbe2, #fefacd);
     border-color: #fde68a;
 }
 
 .carta-info:nth-of-type(3) a {
     color: #db7706;
+}
+
+.buscador-libros {
+    padding-top: 4em;
+    padding-bottom: 4em;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #eef2ff;
+    text-align: center;
+}
+
+.buscador-libros h3 {
+    font-weight: 700;
+    overflow: hidden;
+}
+
+.contenedor-texto-buscador {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: 2em;
+
+    padding-top: 80px;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 60vw;
+    min-height: 50vh;
+    background-color: white;
+
+    border-radius: 20px;
+    border-color: #e0e7ff;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.contenedor-texto-buscador .contenedor-titulo {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-bottom: 1em;
+}
+
+.contenedor-buscador {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+    padding: 20px;
+    background-color: #dde9ff;
+    width: 100%;
+    min-height: 60%;
+
+    color: #3730b8;
+    font-weight: 500;
+
+    border-radius: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c7d2fe;
+}
+
+.contenedor-buscador form {
+    width: 100%;
+    min-height: 50%;
+}
+
+.contenedor-buscador input {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    border-color: #a5b4fc;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+
+    width: 100%;
+    min-height: 100%;
+
+}
+
+.contenedor-buscador input::placeholder {
+    color: #798082;
+}
+
+.contenedor-buscador textarea {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    border-color: #a5b4fc;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+
+    width: 100%;
+    min-height: 100%;
+
+}
+
+.contenedor-buscador textarea::placeholder {
+    color: #798082;
+}
+
+.contenedor-buscador p {
+    overflow: hidden;
+}
+
+
+.contenedor-buscador button {
+    margin-top: 1em;
+    overflow: hidden;
+
+    background-color: #4f46e5;
+    color: white;
+
+    padding: 10px 20px;
+    border-radius: 10px;
+    border-color: transparent;
+
+    font-weight: 500;
+
+}
+
+.contenedor-buscador button:hover {
+    background-color: #4338ca;
+}
+
+.resultados {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.list-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.book-item {
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.book-link {
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.book-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.book-info span {
+    margin-right: 10px;
+}
+
+.book-info strong {
+    font-weight: bold;
+}
+
+.book-item:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.book-item:hover .book-info {
+    text-decoration: underline;
+}
+
+.store-name {
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+
+
+footer {
+    height: 20vh;
+    background-color: black;
+    width: 100vw;
 }

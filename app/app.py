@@ -3,7 +3,7 @@ from scraper import scrapear_libros  # Importamos la función de scraping desde 
 
 app=Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST']) # Vistas, en este caso raíz
+@app.route('/', methods=['GET', 'POST'])
 def index():
     libros = []
 
@@ -12,6 +12,7 @@ def index():
         if isbn:
             libros = scrapear_libros(isbn)
             libros = sorted(libros, key=lambda libro: libro.precio)
+
     return render_template('index.html', libros=libros)
 
 if __name__ == '__main__':

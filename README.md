@@ -7,17 +7,17 @@
 </p>
 
 <div align="center">
-    <img alt="Github repo stars" src="https://img.shields.io/github/stars/carmoruda/BookHunt?color=db6d28&labelColor=202328&style=for-the-badge">
-    <img alt="Github repo forks" src="https://img.shields.io/github/forks/carmoruda/BookHunt?color=388bfd&labelColor=202328&style=for-the-badge">
-    <img alt="Github repo open issues" src="https://img.shields.io/github/issues/carmoruda/BookHunt?color=f85149&labelColor=202328&style=for-the-badge">
-    <img alt="Github repo open pull requests" src="https://img.shields.io/github/issues-pr/carmoruda/BookHunt?color=a371f7&labelColor=202328&style=for-the-badge">
+    <img alt="Github repo stars" src="https://img.shields.io/github/stars/UFV-INGINF/BookHunt?color=db6d28&labelColor=202328&style=for-the-badge">
+    <img alt="Github repo forks" src="https://img.shields.io/github/forks/UFV-INGINF/BookHunt?color=388bfd&labelColor=202328&style=for-the-badge">
+    <img alt="Github repo open issues" src="https://img.shields.io/github/issues/UFV-INGINF/BookHunt?color=f85149&labelColor=202328&style=for-the-badge">
+    <img alt="Github repo open pull requests" src="https://img.shields.io/github/issues-pr/UFV-INGINF/BookHunt?color=a371f7&labelColor=202328&style=for-the-badge">
     <br>
     <img alt="code style: black" src="https://img.shields.io/static/v1?label=code%20style&labelColor=202328&message=black&color=black&style=for-the-badge">
     <img alt="pre-commit" src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?&color=2ea043&labelColor=202328&style=for-the-badge">
     <br>
-    <img alt="Repo size" src="https://img.shields.io/github/repo-size/carmoruda/BookHunt?color=FF69B4&labelColor=202328&style=for-the-badge">
-    <img alt="Github last commit (branch)" src="https://img.shields.io/github/last-commit/carmoruda/BookHunt/main?color=C9CC3F&labelColor=202328&label=Last Update%3F&style=for-the-badge">
-    <img alt="Github repo license" src="https://img.shields.io/github/license/carmoruda/BookHunt?color=15121C&labelColor=202328&style=for-the-badge">
+    <img alt="Repo size" src="https://img.shields.io/github/repo-size/UFV-INGINF/BookHunt?color=FF69B4&labelColor=202328&style=for-the-badge">
+    <img alt="Github last commit (branch)" src="https://img.shields.io/github/last-commit/UFV-INGINF/BookHunt/main?color=C9CC3F&labelColor=202328&label=Last Update%3F&style=for-the-badge">
+    <img alt="Github repo license" src="https://img.shields.io/github/license/UFV-INGINF/BookHunt?color=15121C&labelColor=202328&style=for-the-badge">
 </div>
 
 ## Introducción

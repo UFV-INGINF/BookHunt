@@ -146,13 +146,71 @@ def scrape_iberlibro(isbn_libro):
 
     return libros
 
+def scrape_agapea(isbn_libro):
+    url = f"https://www.agapea.com/buscar/{isbn_libro}"
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        page = browser.new_page()
+
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
+        }
+        page.set_extra_http_headers(headers)
+        page.goto(url)
+        page.wait_for_load_state("domcontentloaded", timeout=10000)
+        
+        libros = []
+
+        try:
+            page.wait_for_selector('.listado-libros', timeout=10000)
+            item = page.query_selector('.listado-libros .producto')
+
+            if item:
+                try:
+                    nombre_element = item.query_selector('.titulo a')
+                    if nombre_element:
+                        nombre = nombre_element.inner_text().strip()
+                    else:
+                        nombre = "Nombre no disponible"
+
+                    precio_element = item.query_selector('.precio')
+                    if precio_element:
+                        precio_texto = precio_element.inner_text().strip()
+                        precio = float(
+                            precio_texto.replace("EUR", "").replace(",", ".").strip()
+                        )
+                    else:
+                        precio = 0.0
+
+                    enlace_element = item.query_selector('.titulo a')
+                    enlace = enlace_element.get_attribute('href') if enlace_element else url
+                    enlace = f"https://www.agapea.com{enlace}" if enlace else url
+
+                    libro = Libro(
+                        nombre=nombre,
+                        isbn=isbn_libro,
+                        tienda="Agapea",
+                        precio=precio,
+                        gastos_envio=0,
+                        enlace=enlace,  # Añadir el enlace de búsqueda de Iberlibro
+                    )
+                    libros.append(libro)
+
+                except Exception as e:
+                    print(f"Error al extraer información de un libro de Iberlibro: {e}")
+        except Exception as e:
+            print(f"Error general en Agapea: {e}")
+        browser.close()
+
+    return libros
 
 def scrapear_libros(isbn_libro):
     libros = []
 
     libros += scrape_casa_del_libro(isbn_libro)
     libros += scrape_iberlibro(isbn_libro)
-
+    libros += scrape_agapea(isbn_libro)
     return libros
 
 

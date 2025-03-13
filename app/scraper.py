@@ -147,10 +147,10 @@ def scrape_iberlibro(isbn_libro):
     return libros
 
 def scrape_agapea(isbn_libro):
-    url = f"https://www.agapea.com/buscar/{isbn_libro}"
+    url = f"https://www.agapea.com/buscar/buscador.php?texto={isbn_libro}"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
         page = browser.new_page()
 
         headers = {
@@ -163,42 +163,26 @@ def scrape_agapea(isbn_libro):
         libros = []
 
         try:
-            page.wait_for_selector('.listado-libros', timeout=10000)
-            item = page.query_selector('.listado-libros .producto')
+            
+            nombre_element = page.query_selector('h1')
+            nombre = nombre_element.inner_text().strip() if nombre_element else "Nombre no disponible"
+            precio_element = page.query_selector('.precio strong')
+            precio_texto = precio_element.inner_text().strip() if precio_element else "0"
+            precio = float(precio_texto.replace("€", "").replace(",", ".").strip())
+            envio_element = page.query_selector(".envio-gratis")
+            gastos_envio = 0 if envio_element else 3.99  # Suponiendo que el envío cuesta 3.99 si no es gratis
 
-            if item:
-                try:
-                    nombre_element = item.query_selector('.titulo a')
-                    if nombre_element:
-                        nombre = nombre_element.inner_text().strip()
-                    else:
-                        nombre = "Nombre no disponible"
+            libro = Libro(
+                nombre=nombre,
+                isbn=isbn_libro,
+                tienda="Agapea",
+                precio=precio,
+                gastos_envio=gastos_envio,
+                enlace=url,
+            )
+                    
+            libros.append(libro)
 
-                    precio_element = item.query_selector('.precio')
-                    if precio_element:
-                        precio_texto = precio_element.inner_text().strip()
-                        precio = float(
-                            precio_texto.replace("EUR", "").replace(",", ".").strip()
-                        )
-                    else:
-                        precio = 0.0
-
-                    enlace_element = item.query_selector('.titulo a')
-                    enlace = enlace_element.get_attribute('href') if enlace_element else url
-                    enlace = f"https://www.agapea.com{enlace}" if enlace else url
-
-                    libro = Libro(
-                        nombre=nombre,
-                        isbn=isbn_libro,
-                        tienda="Agapea",
-                        precio=precio,
-                        gastos_envio=0,
-                        enlace=enlace,  # Añadir el enlace de búsqueda de Iberlibro
-                    )
-                    libros.append(libro)
-
-                except Exception as e:
-                    print(f"Error al extraer información de un libro de Iberlibro: {e}")
         except Exception as e:
             print(f"Error general en Agapea: {e}")
         browser.close()
@@ -219,5 +203,5 @@ libros = scrapear_libros(isbn_libro)
 
 for libro in libros:
     print(
-        f"Nombre: {libro.nombre}, ISBN: {libro.isbn}, Tienda: {libro.tienda}, Precio: {libro.precio}, Total: {libro.total}, Enlace: {libro.enlace}"
+        f"Nombre: {libro.nombre}, ISBN: {libro.isbn}, Tienda: {libro.tienda}, Precio: {libro.precio}, Total: {libro.total}, Enlace: {libro.enlace}. Gastos de envío: {libro.gastos_envio}"
     )

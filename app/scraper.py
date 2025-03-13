@@ -146,13 +146,55 @@ def scrape_iberlibro(isbn_libro):
 
     return libros
 
+def scrape_agapea(isbn_libro):
+    url = f"https://www.agapea.com/buscar/buscador.php?texto={isbn_libro}"
+
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
+        }
+        page.set_extra_http_headers(headers)
+        page.goto(url)
+        page.wait_for_load_state("domcontentloaded", timeout=10000)
+        
+        libros = []
+
+        try:
+            
+            nombre_element = page.query_selector('h1')
+            nombre = nombre_element.inner_text().strip() if nombre_element else "Nombre no disponible"
+            precio_element = page.query_selector('.precio strong')
+            precio_texto = precio_element.inner_text().strip() if precio_element else "0"
+            precio = float(precio_texto.replace("€", "").replace(",", ".").strip())
+            envio_element = page.query_selector(".envio-gratis")
+            gastos_envio = 0 if envio_element else 3.99  # Suponiendo que el envío cuesta 3.99 si no es gratis
+
+            libro = Libro(
+                nombre=nombre,
+                isbn=isbn_libro,
+                tienda="Agapea",
+                precio=precio,
+                gastos_envio=gastos_envio,
+                enlace=url,
+            )
+                    
+            libros.append(libro)
+
+        except Exception as e:
+            print(f"Error general en Agapea: {e}")
+        browser.close()
+
+    return libros
 
 def scrapear_libros(isbn_libro):
     libros = []
 
     libros += scrape_casa_del_libro(isbn_libro)
     libros += scrape_iberlibro(isbn_libro)
-
+    libros += scrape_agapea(isbn_libro)
     return libros
 
 
@@ -161,5 +203,5 @@ libros = scrapear_libros(isbn_libro)
 
 for libro in libros:
     print(
-        f"Nombre: {libro.nombre}, ISBN: {libro.isbn}, Tienda: {libro.tienda}, Precio: {libro.precio}, Total: {libro.total}, Enlace: {libro.enlace}"
+        f"Nombre: {libro.nombre}, ISBN: {libro.isbn}, Tienda: {libro.tienda}, Precio: {libro.precio}, Total: {libro.total}, Enlace: {libro.enlace}. Gastos de envío: {libro.gastos_envio}"
     )

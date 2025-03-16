@@ -68,7 +68,7 @@ html {
 	overflow: hidden;
 	padding-left: 25px;
 	padding-right: 25px;
-	background: #FACC15;
+	background: #FFC107;
 	border-radius: 50px;
 }
 
@@ -142,26 +142,28 @@ html {
 }
 
 .header-button {
-	overflow-x: visible;
+	overflow: visible;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	padding: 20px;
 	font-family: 'Inter', 'Poppins', sans-serif;
-	font-size: 1em;
-	font-weight: 500;
+	color: black;
+	font-weight: bold;
 	width: 263px;
 	height: 48px;
-	background-color: #facd15;
+	background-color: #FFC107;
 	border-color: transparent;
 	border-radius: 15px;
 	transition: 0.5s all;
 	user-select: none;
 	cursor: pointer;
+	margin: 10px;
 }
 
 .header-button:hover {
-	background-color: #eab308;
+	background-color: #E6A800;
+	transform: scale(1.05);
 }
 
 
@@ -559,6 +561,53 @@ html {
 	color: #71717A;
 }
 
+.hero {
+	background: linear-gradient(90deg, #512C7B, #2D5C9A); /* Fondo degradado */
+	padding: 60px 20px;
+	text-align: center;
+	position: relative;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 400px;
+}
+
+.hero h1 {
+	font-size: 3em;
+	font-weight: 800;
+	margin-bottom: 15px;
+	color: white;
+}
+
+.hero p {
+	color: white;
+	font-size: 1.3em;
+	font-weight: 400;
+}
+
+.hero .cta-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	background: #FFC107; /* Amarillo vibrante */
+	color: black;
+	font-weight: bold;
+	padding: 12px 20px;
+	border-radius: 15px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+	transition: 0.3s;
+	margin: 10px;
+	margin-top: 25px;
+	cursor: pointer;
+}
+
+.hero .cta-button:hover {
+	background: #E6A800;
+	transform: scale(1.05);
+}
+
 .footer {
 	height: 33vh;
 	width: 100vw;
@@ -600,7 +649,7 @@ html {
 	margin-bottom: 5px;
 }
 .footer-links a:hover {
-	color: #facc15;
+	color: #E6A800;
 }
 
 .footer-subscribe {
@@ -621,7 +670,7 @@ html {
 	outline: none;
 }
 .footer-subscribe button {
-	background-color: #facc15;
+	background-color: #FFC107;
 	color: black;
 	font-family: 'Inter', 'Poppins', sans-serif;
 	font-size: 1em;
@@ -632,7 +681,7 @@ html {
 	border-radius: 0px 10px 10px 0px;
 }
 .footer-subscribe button:hover {
-	background-color: #eab308;
+	background-color: #E6A800;
 }
 .footer-bottom {
 	border-top: 1px solid #262b31;

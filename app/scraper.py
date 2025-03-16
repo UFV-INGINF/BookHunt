@@ -174,7 +174,7 @@ def scrape_agapea(isbn_libro):
     url = f"https://www.agapea.com/buscar/buscador.php?texto={isbn_libro}"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
 
         headers = {
@@ -187,7 +187,6 @@ def scrape_agapea(isbn_libro):
         libros = []
 
         try:
-
             nombre_element = page.query_selector("h1")
             nombre = (
                 nombre_element.inner_text().strip()
@@ -231,10 +230,10 @@ def scrapear_libros(isbn_libro):
     return libros
 
 
-isbn_libro = "9788467033540"
-libros = scrapear_libros(isbn_libro)
+# isbn_libro = "9788467033540"
+# libros = scrapear_libros(isbn_libro)
 
-for libro in libros:
-    print(
-        f"Nombre: {libro.nombre}, ISBN: {libro.isbn}, Tienda: {libro.tienda}, Precio: {libro.precio}, Total: {libro.total}, Enlace: {libro.enlace}. Gastos de envío: {libro.gastos_envio}"
-    )
+# for libro in libros:
+#     print(
+#         f"Nombre: {libro.nombre}, ISBN: {libro.isbn}, Tienda: {libro.tienda}, Precio: {libro.precio}, Total: {libro.total}, Enlace: {libro.enlace}. Gastos de envío: {libro.gastos_envio}"
+#     )

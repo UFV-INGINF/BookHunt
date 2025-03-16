@@ -231,10 +231,10 @@ def scrapear_libros(isbn_libro):
     return libros
 
 
-isbn_libro = "9788467033540"
-libros = scrapear_libros(isbn_libro)
+# isbn_libro = "9788467033540"
+# libros = scrapear_libros(isbn_libro)
 
-for libro in libros:
-    print(
-        f"Nombre: {libro.nombre}, ISBN: {libro.isbn}, Tienda: {libro.tienda}, Precio: {libro.precio}, Total: {libro.total}, Enlace: {libro.enlace}. Gastos de envío: {libro.gastos_envio}"
-    )
+# for libro in libros:
+#     print(
+#         f"Nombre: {libro.nombre}, ISBN: {libro.isbn}, Tienda: {libro.tienda}, Precio: {libro.precio}, Total: {libro.total}, Enlace: {libro.enlace}. Gastos de envío: {libro.gastos_envio}"
+#     )

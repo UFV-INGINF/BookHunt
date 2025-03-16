@@ -499,6 +499,7 @@ p {
 }
 
 .boton-añadir {
+    text-decoration: none;
     padding: 6px 20px;
     background: linear-gradient(to right, #4f47e5, #2563eb);
     font-family: 'Poppins', sans-serif;
@@ -520,6 +521,7 @@ p {
 }
 
 .boton-ver {
+    text-decoration: none;
     padding: 6px 20px;
     background: transparent;
     font-family: 'Poppins', sans-serif;

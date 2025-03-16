@@ -25,6 +25,7 @@ html {
 	font-weight: 700;
 	text-decoration: none;
 	cursor: text;
+	cursor: pointer;
 }
 
 .navbar-brand:hover {
@@ -140,7 +141,7 @@ html {
 	padding-bottom: 1em;
 }
 
-.header button {
+.header-button {
 	overflow-x: visible;
 	display: flex;
 	flex-direction: row;
@@ -155,10 +156,12 @@ html {
 	border-color: transparent;
 	border-radius: 15px;
 	transition: 0.5s all;
+	user-select: none;
+	cursor: pointer;
 }
 
-.header button:hover {
-	background-color: #e3ba18;
+.header-button:hover {
+	background-color: #eab308;
 }
 
 
@@ -446,6 +449,115 @@ html {
 	text-transform: capitalize;
 }
 
+.testimonials {
+	padding-top: 6em;
+	padding-bottom: 6em;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+.testimonials .testimonials-info {
+	padding-bottom: 3em;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	background: white;
+	text-align: center;
+}
+
+.testimonials .testimonials-info h3 {
+	font-size: 3.5em;
+	font-weight: 800;
+	background-clip: text;
+	font font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+.testimonials-info h5 {
+	color: #71717A;
+	font-size: 1.3em;
+	font-weight: 400;
+}
+
+.testimonials-container {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+	overflow: visible;
+}
+
+.testimonial-card {
+	width: 370px  !important;
+	height: 250px  !important;
+	background: white;
+	border-radius: 16px;
+	box-shadow:
+		0px 4px 6px -4px rgba(0, 0, 0, 0.1),
+		0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	width: 300px;
+	text-align: left;
+	position: relative;
+	border: 1px solid #f3e7ff;
+	overflow: visible;
+}
+
+.testimonial-card::before {
+	content: '"';
+	font-size: 60px;
+	color: #e1c6ff75;
+	position: absolute;
+	top: -30px;
+	left: -10px;
+}
+
+.testimonial-text {
+	margin-top: 10px;
+	margin-left: 10px;
+	width: 300px;
+	font-size: 16px;
+	font-weight: 400;
+	color: #09090B;
+}
+
+.testimonial-author {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 25px;
+	margin-left: 10px
+}
+
+.author-avatar {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: #F1E0FF;
+	color: #9333EA;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+}
+
+.author-info {
+	display: flex;
+	flex-direction: column;
+}
+
+.author-name {
+	font-weight: 600;
+	font-size: 16px;
+	color: #09090B;
+}
+
+.author-role {
+	font-size: 14px;
+	color: #71717A;
+}
 
 .footer {
 	height: 33vh;

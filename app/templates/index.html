@@ -324,21 +324,19 @@
           <h3>Resultados de búsqueda</h3>
           <div class="list-container">
             {% if libros %} {% for libro in libros %}
-            <div class="book-item">
-              <a href="{{ libro.enlace }}" class="book-link" target="_blank">
-                <div class="book-info">
-                  <span class="store-name"
-                    ><strong>{{ libro.tienda }}:</strong> {{ libro.nombre
-                    }}</span
-                  >
-                  <span><strong>Precio:</strong> {{ libro.precio }}€</span>
-                  <span
-                    ><strong>Gastos Envío:</strong> {{ libro.gastos_envio
-                    }}€</span
-                  >
-                  <span><strong>Total:</strong> {{ libro.total }}€</span>
-                </div>
-              </a>
+            <div class="result-container">
+              <div class="pill-tienda">
+                <h6>Tienda</h6>
+              </div>
+              <div class="container-info-libro">
+                <h5>Titulo Libro</h5>
+                <p>Autor Libro</p>
+                <p>ISBN: 9788408264385</p>
+              </div>
+              <div class="container-precios">
+                <div class="container-info-precios"></div>
+              </div>
+              <h5>19.85€</h5>
             </div>
             {% endfor %} {% else %}
             <p>No se han encontrado libros.</p>

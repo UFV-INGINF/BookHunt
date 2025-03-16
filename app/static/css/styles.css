@@ -383,54 +383,8 @@ html {
 
 .list-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 20px;
-}
-
-.book-item {
-    width: 100%;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-
-.book-link {
-    display: block;
-    text-decoration: none;
-    color: #333;
-}
-
-.book-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    color: #333;
-}
-
-.book-info span {
-    margin-right: 10px;
-}
-
-.book-info strong {
-    font-weight: bold;
-}
-
-.book-item:hover {
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
-
-.book-item:hover .book-info {
-    text-decoration: underline;
-}
-
-.store-name {
-    font-weight: bold;
-    font-size: 16px;
-    text-transform: capitalize;
 }
 
 

@@ -278,11 +278,10 @@ p {
     justify-content: start;
     gap: 2em;
 
-    padding-top: 80px;
+    padding-top: 35px;
     padding-left: 40px;
     padding-right: 40px;
     width: 60vw;
-    min-height: 50vh;
     background-color: white;
 
     border-radius: 20px;
@@ -295,7 +294,6 @@ p {
     display: flex;
     flex-direction: row;
     gap: 1em;
-    margin-bottom: 1em;
 }
 
 .contenedor-buscador {
@@ -343,6 +341,10 @@ p {
     color: #798082;
 }
 
+.contenedor-buscador  input:focus {
+	outline: none;
+}
+
 .contenedor-buscador textarea {
     display: flex;
     flex-direction: row;
@@ -359,12 +361,18 @@ p {
 
 }
 
+.contenedor-buscador  textarea:focus {
+	border-color: #5672fd;
+	outline: none;
+}
+
 .contenedor-buscador textarea::placeholder {
     color: #798082;
 }
 
 .contenedor-buscador p {
     overflow: hidden;
+	padding-bottom: 10px;
 }
 
 
@@ -389,6 +397,7 @@ p {
 
 .resultados {
     padding: 2em;
+	padding-top: 0;
     width: 100%;
     border-radius: 8px;
 }

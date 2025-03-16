@@ -146,7 +146,7 @@ html {
 	flex-direction: row;
 	align-items: center;
 	padding: 20px;
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Inter', 'Poppins', sans-serif;
 	font-size: 1em;
 	font-weight: 500;
 	width: 263px;
@@ -447,8 +447,88 @@ html {
 }
 
 
-footer {
-	height: 20vh;
-	background-color: black;
+.footer {
+	height: 33vh;
 	width: 100vw;
+	background-color: #111827;
+	color: #9CA3AF;
+	padding: 40px 0;
+}
+
+.footer-logo {
+	color: white;
+	font-family: 'Inter', 'Poppins', sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+}
+
+.text-with-padding {
+	padding-left: 10px;
+}
+
+.text-gray {
+	padding-top: 16px;
+	color: #9CA3AF;
+	font-family: 'Inter', 'Poppins', sans-serif;
+	font-weight: 400;
+}
+
+.text-white {
+	color: white;
+	font-family: 'Inter', 'Poppins', sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+	padding-top: 10px;
+}
+
+.footer-links a {
+	display: block;
+	color: #b3b3b3;
+	text-decoration: none;
+	margin-bottom: 5px;
+}
+.footer-links a:hover {
+	color: #facc15;
+}
+
+.footer-subscribe {
+	width: 320px;
+}
+
+.footer-subscribe input {
+	background-color: #1F2937;
+	border: none;
+	padding: 8px;
+	width: 70%;
+	font-size: 16px;
+	font-weight: 400;
+	color: #B2B2B2;
+	border-radius: 10px 0px 0px 10px;
+}
+.footer-subscribe input:focus {
+	outline: none;
+}
+.footer-subscribe button {
+	background-color: #facc15;
+	color: black;
+	font-family: 'Inter', 'Poppins', sans-serif;
+	font-size: 1em;
+	font-weight: 700;
+	border: none;
+	padding: 8px 15px;
+	cursor: pointer;
+	border-radius: 0px 10px 10px 0px;
+}
+.footer-subscribe button:hover {
+	background-color: #eab308;
+}
+.footer-bottom {
+	border-top: 1px solid #262b31;
+	text-align: center;
+	padding-top: 15px;
+	margin-top: 20px;
+	color: #6B7280;
+	font-family: 'Inter', 'Poppins', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
 }

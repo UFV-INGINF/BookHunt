@@ -84,6 +84,7 @@ def scrape_casa_del_libro(isbn_libro):
     title_match = soup.title.text
     book_title = "Nombre no disponible"
     price = 0.0
+    gastos_envio = 0.0
 
     if title_match is not None:
         parts = title_match.split(" | ")
@@ -101,6 +102,10 @@ def scrape_casa_del_libro(isbn_libro):
                 # Redondear a 2 decimales
                 price = round(price, 2)
 
+                # En la casa del libro, los gastos de envío son 0 si el precio es mayor a 19
+                if price < 19:
+                    gastos_envio = 2.99
+
     # El enlace será el de la página del libro (no de búsqueda)
     enlace = url_libro
     libro = Libro(
@@ -108,8 +113,8 @@ def scrape_casa_del_libro(isbn_libro):
         isbn=isbn_libro,
         tienda="La Casa del Libro",
         precio=price,
-        gastos_envio=0,
-        enlace=enlace,  # Añadir el enlace de búsqueda
+        gastos_envio=gastos_envio,
+        enlace=enlace,
         fecha_entrega=0,
     )
     libros.append(libro)

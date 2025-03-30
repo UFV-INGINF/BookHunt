@@ -36,6 +36,7 @@ def scrape_amazon(isbn):
 
     soup = BeautifulSoup(response.text, "html.parser")
     resultados = []
+    gastos_envio = 0.0
 
     for item in soup.select("div.s-result-item"):
         titulo = item.select_one("h2 span")
@@ -45,6 +46,15 @@ def scrape_amazon(isbn):
         fecha_spans = item.select("span.a-color-base.a-text-bold")
 
         dias_restantes = 3
+
+        try:
+            precio = float((precio_entero.text + precio_decimal.text).replace(",", "."))
+
+            if precio < 19:
+                gastos_envio = 0.99
+
+        except Exception as e:
+            print(f"Error procesando el precio: {e}")
 
         if fecha_spans:
             fecha_texto = None
@@ -99,10 +109,8 @@ def scrape_amazon(isbn):
                     nombre=titulo.text.strip(),
                     isbn=isbn,
                     tienda="Amazon",
-                    precio=float(
-                        (precio_entero.text + precio_decimal.text).replace(",", ".")
-                    ),
-                    gastos_envio=0,
+                    precio=precio,
+                    gastos_envio=gastos_envio,
                     enlace="https://amazon.es" + link["href"],
                     fecha_entrega=dias_restantes,
                 )

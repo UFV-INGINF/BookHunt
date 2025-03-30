@@ -51,9 +51,11 @@ def scrape_agapea(isbn_libro):
 
         # Verificar si el envío es gratis
         envio_element = soup.select_one(".envio-gratis")
-        gastos_envio = 0 if envio_element else 3.99
 
-        # Crear objeto Libro
+        # En agapea, los gastos de envío son 0 si el precio es mayor a 18
+        if precio < 18:
+            gastos_envio = 2.95
+
         libro = Libro(
             nombre=nombre,
             isbn=isbn_libro,

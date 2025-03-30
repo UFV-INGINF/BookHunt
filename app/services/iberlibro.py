@@ -36,6 +36,10 @@ def scrape_iberlibro(isbn_libro):
 
             # Extraer precio del libro
             precio_element = item.select_one("p[data-test-id='item-price']")
+            gastos_envio = 0.0
+
+            gastos_envio_element = item.select_one("span[id='item-shipping-price-1']")
+
             if precio_element:
                 precio_texto = precio_element.text.strip()
                 precio = float(
@@ -43,6 +47,17 @@ def scrape_iberlibro(isbn_libro):
                 )
             else:
                 precio = 0.0
+
+            if gastos_envio_element:
+                gastos_envio_texto = gastos_envio_element.text.strip()
+                gastos_envio = float(
+                    gastos_envio_texto.replace("EUR", "")
+                    .replace(",", ".")
+                    .replace("Gastos de envío", "")
+                    .strip()
+                )
+
+                print(gastos_envio)
 
             # Extraer enlace del libro
             link_element = item.select_one("a[itemprop='url']")
@@ -57,9 +72,9 @@ def scrape_iberlibro(isbn_libro):
                 isbn=isbn_libro,
                 tienda="Iberlibro",
                 precio=precio,
-                gastos_envio=0,  # Iberlibro generalmente no muestra gastos de envío en la página de resultados
+                gastos_envio=gastos_envio,
                 enlace=enlace,
-                fecha_entrega=0,  # Iberlibro no suele mostrar fechas de entrega en resultados
+                fecha_entrega=0,
             )
             libros.append(libro)
 

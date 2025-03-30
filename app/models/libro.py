@@ -19,4 +19,4 @@ class Libro:
         self.fecha_entrega = fecha_entrega
 
     def calc_total(self):
-        return self.precio + self.gastos_envio
+        return round(self.precio + self.gastos_envio, 2)

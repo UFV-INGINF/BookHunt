@@ -91,20 +91,18 @@ def scrape_casa_del_libro(isbn_libro):
         },
     )
 
+    soup = BeautifulSoup(response.text, "html.parser")
+
     # Extraer la información de la etiqueta title
-    title_match = re.search(r"<title>(.*?)</title>", response.text)
+    title_match = soup.title.text
     book_title = "Nombre no disponible"
     price = 0.0
 
-    if title_match:
-        title_content = title_match.group(1)
-        # El formato esperado es: "TÍTULO | AUTOR | EDITORIAL | Casa del Libro"
-        parts = title_content.split(" | ")
+    if title_match is not None:
+        parts = title_match.split(" | ")
 
-        if len(parts) >= 3:
+        if len(parts) >= 2:
             book_title = parts[0].strip()
-            author = parts[1].strip()
-            editorial = parts[2].strip() if len(parts) > 2 else "N/A"
 
             # Extracción de precio usando regex (buscando formato xx.xx EUR)
             price_match = re.search(r'"(\d+\.\d+)\s+EUR"', response.text)

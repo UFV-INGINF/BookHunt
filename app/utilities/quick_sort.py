@@ -57,10 +57,12 @@ def ordenar_libros(libros, criterio="precio"):
         return []
 
     if criterio == "precio":
-        return quick_sort(libros, key=lambda libro: libro.precio)
+        return quick_sort(
+            libros, key=lambda libro: float(libro.precio.replace("€", ""))
+        )
     elif criterio == "nombre":
         return quick_sort(libros, key=lambda libro: libro.nombre.lower())
     elif criterio == "total":
-        return quick_sort(libros, key=lambda libro: libro.total)
+        return quick_sort(libros, key=lambda libro: float(libro.total.replace("€", "")))
     else:
         return libros

@@ -2,3 +2,4 @@ flask
 requests
 playwright
 requests
+aws-requests-auth

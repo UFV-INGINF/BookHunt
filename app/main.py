@@ -1,7 +1,7 @@
 import requests
 from flask import Flask, jsonify, request
 from scraper import scrapear_libros
-from utilities import ordenar_libros
+from utilities.quick_sort import ordenar_libros
 
 
 GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes?q="

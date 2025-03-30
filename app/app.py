@@ -12,7 +12,7 @@ def index():
         isbn = request.form.get("isbn_libro", "").strip()
         if isbn:
             libros = scrapear_libros(isbn)
-            libros = sorted(libros, key=lambda libro: libro.precio)
+            libros = sorted(libros, key=lambda libro: libro.total)
     return render_template("index.html", libros=libros)
 
 

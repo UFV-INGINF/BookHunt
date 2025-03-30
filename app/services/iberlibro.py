@@ -57,8 +57,6 @@ def scrape_iberlibro(isbn_libro):
                     .strip()
                 )
 
-                print(gastos_envio)
-
             # Extraer enlace del libro
             link_element = item.select_one("a[itemprop='url']")
             if link_element and "href" in link_element.attrs:

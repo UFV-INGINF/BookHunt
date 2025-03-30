@@ -115,7 +115,7 @@ def scrape_casa_del_libro(isbn_libro):
         precio=price,
         gastos_envio=gastos_envio,
         enlace=enlace,
-        fecha_entrega=0,
+        fecha_entrega="1 a 3 días",
     )
     libros.append(libro)
 

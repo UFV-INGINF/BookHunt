@@ -9,13 +9,36 @@ headers = {
 }
 
 
+def extraer_tiempo_entrega_agapea(soup):
+    """
+    Extrae el tiempo de entrega de la página de Agapea.
+
+    Args:
+        soup (BeautifulSoup): Objeto BeautifulSoup con el HTML parseado
+
+    Returns:
+        str: El tiempo de entrega (ej: "1 a 15 días") o None si no se encuentra
+    """
+    # Buscar el div con la clase "etiqueta" que contiene el tiempo de entrega
+    etiqueta_div = soup.select_one("div.etiquetas-cont div.etiqueta span")
+
+    if etiqueta_div:
+        return etiqueta_div.text
+
+    return None
+
+
 def scrape_agapea(isbn_libro):
     """Scraper de Agapea utilizando requests y BeautifulSoup."""
     url = f"https://www.agapea.com/buscar/buscador.php?texto={isbn_libro}"
 
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
+    }
+
     try:
         response = requests.get(url, headers=headers)
-        response.encoding = "utf-8"  # Forzar codificación UTF-8
+        response.encoding = "utf-8"
 
         if response.status_code != 200:
             print(f"Error al acceder a Agapea (status code: {response.status_code})")
@@ -33,29 +56,31 @@ def scrape_agapea(isbn_libro):
         # Extraer precio del libro
         precio_element = soup.select_one(".precio strong")
         precio = 0.0
+        gastos_envio = 0.0
 
         if precio_element:
-            # Limpiar el texto del precio de caracteres no deseados
             precio_texto = precio_element.text.strip()
-            # Eliminar todos los caracteres excepto dígitos, punto y coma
             precio_limpio = "".join(c for c in precio_texto if c.isdigit() or c in ".,")
-            # Reemplazar coma por punto para formato flotante
             precio_limpio = precio_limpio.replace(",", ".")
 
             try:
-                # Intentar convertir a float
                 precio = float(precio_limpio)
             except ValueError:
-                print(f"No se pudo convertir el precio: '{precio_texto}' a float")
                 precio = 0.0
 
-        # Verificar si el envío es gratis
-        envio_element = soup.select_one(".envio-gratis")
+        # Extraer tiempo de entrega - PASANDO EL OBJETO SOUP
+        tiempo_entrega = extraer_tiempo_entrega_agapea(soup)
 
-        # En agapea, los gastos de envío son 0 si el precio es mayor a 18
+        # Determinar días hasta entrega
+        dias_entrega = "1 a 15 días"
+        if tiempo_entrega:
+            dias_entrega = tiempo_entrega
+
+        # Determinar gastos de envío
         if precio < 18:
             gastos_envio = 2.95
 
+        # Crear objeto Libro
         libro = Libro(
             nombre=nombre,
             isbn=isbn_libro,
@@ -63,12 +88,15 @@ def scrape_agapea(isbn_libro):
             precio=precio,
             gastos_envio=gastos_envio,
             enlace=url,
-            fecha_entrega=0,
+            fecha_entrega=dias_entrega,
         )
         libros.append(libro)
 
         return libros
 
     except Exception as e:
-        print(f"Error general en Agapea: {e}")
+        print(f"Error en Agapea: {e}")
+        import traceback
+
+        traceback.print_exc()
         return []

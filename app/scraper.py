@@ -108,7 +108,7 @@ def scrape_casa_del_libro(isbn_libro):
         isbn=isbn_libro,
         tienda="La Casa del Libro",
         precio=price,
-        gastos_envio=0.0,
+        gastos_envio=0,
         enlace=enlace,  # Añadir el enlace de búsqueda
     )
     libros.append(libro)

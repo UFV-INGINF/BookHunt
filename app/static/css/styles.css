@@ -799,3 +799,106 @@ p {
 	font-weight: 400;
 	font-size: 16px;
 }
+.tabs {
+    display: flex;
+    justify-content: center; /* Centra los elementos en la línea */
+    gap: 20px; /* Espacio entre los elementos */
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.boton-carrito {
+    all: unset; /* Elimina todos los estilos predeterminados del botón */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el icono y el texto */
+    cursor: pointer;
+}
+
+.boton-busqueda{
+	all: unset; /* Elimina todos los estilos predeterminados del botón */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre el icono y el texto */
+    cursor: pointer;
+}
+#busqueda-content p {
+    text-align: left; /* Esto asegura que el texto se alineé a la izquierda */
+    margin: 0; /* Elimina márgenes innecesarios */
+    padding: 0; /* Elimina rellenos innecesarios */
+}
+
+.item-carrito {
+    background-color: #e9edff;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-libro-carrito h5 {
+    font-size: 1.1rem;
+    color: #3730a3;
+    margin: 0;
+}
+
+.info-libro-carrito p {
+    color: #444;
+    margin: 4px 0 0 0;
+}
+
+.precios-carrito p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+}
+
+.total-carrito {
+    color: #4338ca;
+    font-weight: bold;
+}
+
+.acciones-carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.boton-quitar {
+    background-color: #f87171;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.boton-quitar:hover {
+    background-color: #ef4444;
+}
+.boton-limpiar {
+    background-color: #ff9800; /* Un color destacado para diferenciarlo */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.boton-limpiar:hover {
+    background-color: #fb8c00; /* Color más oscuro al hacer hover */
+}
+
+.boton-limpiar:focus {
+    outline: none; /* Quitar el borde al hacer foco */
+}

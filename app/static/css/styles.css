@@ -338,6 +338,15 @@ p {
     width: 100%;
 }
 
+.contenedor-buscador.contenedor-buscador-texto {
+    background: linear-gradient(to right, #dbeafe, #cffafe);
+    color: #1e40af;
+}
+
+.contenedor-buscador.contenedor-buscador-texto button {
+    background-color: #2563eb;
+}
+
 .contenedor-buscador {
     display: flex;
     flex-direction: column;

@@ -271,6 +271,42 @@ p {
     overflow: hidden;
 }
 
+.tab-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #e0e7ff;
+    width: 100%;
+
+    border-radius: 10px;
+}
+
+.tab-container ul {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-item {
+    overflow: hidden;
+    width: 33%;
+}
+
+.nav-item button {
+    color: #71717a;
+    width: 100%;
+}
+
+.nav-item button.nav-link.active {
+    color: #5b51d1;
+}
+
+.nav-item button.nav-link.active svg path {
+    stroke: #5b51d1;
+}
+
+
 .contenedor-texto-buscador {
     display: flex;
     flex-direction: column;

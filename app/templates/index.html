@@ -138,30 +138,34 @@
     <section class="buscador-libros" id="buscador">
       <div class="contenedor-texto-buscador">
         <!-- TABS -->
+        <div class="tab-container">
         <ul class="nav nav-tabs" id="tabs-buscador" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="busqueda-tab" data-bs-toggle="tab" data-bs-target="#busqueda" type="button" role="tab" aria-controls="busqueda" aria-selected="true">
-              <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z" fill="#4f46e5" />
-                <path d="M23.6667 34.3333C29.5577 34.3333 34.3333 29.5577 34.3333 23.6667C34.3333 17.7756 29.5577 13 23.6667 13C17.7756 13 13 17.7756 13 23.6667C13 29.5577 17.7756 34.3333 23.6667 34.3333Z" stroke="#FFF9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M37 37L31.2667 31.2667" stroke="#FFF9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-              Búsqueda por ISBN
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                ISBN
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="texto-tab" data-bs-toggle="tab" data-bs-target="#texto" type="button" role="tab" aria-controls="busqueda por texto" aria-selected="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                <path d="M12 10.4V20M12 10.4C12 8.15979 12 7.03969 11.564 6.18404C11.1805 5.43139 10.5686 4.81947 9.81596 4.43597C8.96031 4 7.84021 4 5.6 4H4.6C4.03995 4 3.75992 4 3.54601 4.10899C3.35785 4.20487 3.20487 4.35785 3.10899 4.54601C3 4.75992 3 5.03995 3 5.6V16.4C3 16.9601 3 17.2401 3.10899 17.454C3.20487 17.6422 3.35785 17.7951 3.54601 17.891C3.75992 18 4.03995 18 4.6 18H7.54668C8.08687 18 8.35696 18 8.61814 18.0466C8.84995 18.0879 9.0761 18.1563 9.29191 18.2506C9.53504 18.3567 9.75977 18.5065 10.2092 18.8062L12 20M12 10.4C12 8.15979 12 7.03969 12.436 6.18404C12.8195 5.43139 13.4314 4.81947 14.184 4.43597C15.0397 4 16.1598 4 18.4 4H19.4C19.9601 4 20.2401 4 20.454 4.10899C20.6422 4.20487 20.7951 4.35785 20.891 4.54601C21 4.75992 21 5.03995 21 5.6V16.4C21 16.9601 21 17.2401 20.891 17.454C20.7951 17.6422 20.6422 17.7951 20.454 17.891C20.2401 18 19.9601 18 19.4 18H16.4533C15.9131 18 15.643 18 15.3819 18.0466C15.15 18.0879 14.9239 18.1563 14.7081 18.2506C14.465 18.3567 14.2402 18.5065 13.7908 18.8062L12 20" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              Texto
             </button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="carrito-tab" data-bs-toggle="tab" data-bs-target="#carrito" type="button" role="tab" aria-controls="carrito" aria-selected="false">
-              <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z" fill="#F59E0B"></path>
-                <path d="M19.6666 38.3334C20.403 38.3334 21 37.7364 21 37C21 36.2636 20.403 35.6667 19.6666 35.6667C18.9303 35.6667 18.3333 36.2636 18.3333 37C18.3333 37.7364 18.9303 38.3334 19.6666 38.3334Z" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M34.3333 38.3334C35.0697 38.3334 35.6667 37.7364 35.6667 37C35.6667 36.2636 35.0697 35.6667 34.3333 35.6667C33.597 35.6667 33 36.2636 33 37C33 37.7364 33.597 38.3334 34.3333 38.3334Z" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M11.7333 11.7333H14.4L17.9467 28.2933C18.0768 28.8998 18.4142 29.442 18.901 29.8265C19.3877 30.211 19.9932 30.4138 20.6133 30.4H33.6533C34.2602 30.399 34.8486 30.1911 35.3214 29.8105C35.7941 29.4298 36.1229 28.8994 36.2533 28.3067L38.4533 18.4H15.8267" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                <path d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               Carrito inteligente
             </button>
           </li>
         </ul>
-    
+      </div>
         <!-- CONTENIDO DE LOS TABS -->
         <div class="tab-content" id="tabsContent">
           <!-- TAB BÚSQUEDA -->

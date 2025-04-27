@@ -111,7 +111,7 @@ def scrape_amazon(isbn):
                     tienda="Amazon",
                     precio=precio,
                     gastos_envio=gastos_envio,
-                    enlace="https://amazon.es" + link["href"],
+                    enlace= link["href"],
                     fecha_entrega=f"{dias_restantes} días",
                 )
             )

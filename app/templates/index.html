@@ -209,7 +209,6 @@
               <form method="POST">
                 <textarea type="text" name="isbn_libro" placeholder="Introduce números ISBN (ej. 9788467033540, 9788467872385)"></textarea>
                 <button type="submit" id="search-button">
-                  <div class="loading-spinner"></div>
                   <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M14 14L11.1333 11.1333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -299,7 +298,6 @@
               <form method="POST" action="/buscar_fragmento">
                 <textarea type="text" name="fragmento_libro" placeholder="Introduce el fragmento de un libro (ej. En un lugar de la mancha, cuyo nombre recordar no quiero...)"></textarea>
                 <button type="submit" id="search-text-button">
-                  <div class="loading-spinner"></div>
                   <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     <path d="M14 14L11.1333 11.1333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -476,6 +474,8 @@
             </div>
         </div>
     </footer>
+    <div class="loading-overlay"></div>
+    <div class="loading-spinner"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
@@ -484,34 +484,18 @@
     <script src="../static/scripts/carrito.js"></script>
 
     <script>
-      // Manejar el spinner en el formulario de ISBN
-      document.getElementById('busqueda').querySelector('form').addEventListener('submit', function(e) {
-          const button = document.getElementById('search-button');
-          const spinner = button.querySelector('.loading-spinner');
-          
-          // Mostrar spinner y deshabilitar botón
-          spinner.style.display = 'block';
-          button.classList.add('loading');
-          button.disabled = true;
+      // Para ambos formularios
+      document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            document.querySelector('.loading-overlay').style.display = 'block';
+            document.querySelector('.loading-spinner').style.display = 'block';
+        });
       });
-      
-      // Resetear spinner si hay errores de validación
-      window.addEventListener('pageshow', function() {
-          const button = document.getElementById('search-button');
-          const spinner = button.querySelector('.loading-spinner');
-          
-          spinner.style.display = 'none';
-          button.classList.remove('loading');
-          button.disabled = false;
-      });
-      // Para el formulario de texto
-      document.getElementById('texto').querySelector('form').addEventListener('submit', function(e) {
-        const button = document.getElementById('search-text-button');
-        const spinner = button.querySelector('.loading-spinner');
-        
-        spinner.style.display = 'block';
-        button.classList.add('loading');
-        button.disabled = true;
+
+      // Reset al cargar la página
+      window.addEventListener('load', function() {
+        document.querySelector('.loading-overlay').style.display = 'none';
+        document.querySelector('.loading-spinner').style.display = 'none';
       });
       </script>
 </body>

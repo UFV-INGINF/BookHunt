@@ -295,8 +295,8 @@
                   </svg>
                   Introduce un fragmento de un libro cuyo nombre recordar no quieres
               </p>
-              <form method="POST">
-                <textarea type="text" name="isbn_libro" placeholder="Introduce el fragmento de un libro (ej. En un lugar de la mancha, cuyo nombre recordar no quiero...)"></textarea>
+              <form method="POST" action="/buscar_fragmento">
+                <textarea type="text" name="fragmento_libro" placeholder="Introduce el fragmento de un libro (ej. En un lugar de la mancha, cuyo nombre recordar no quiero...)"></textarea>
                 <button type="submit">
                   <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -306,6 +306,26 @@
                 </button>
               </form>
             </div>
+            <!-- RESULTADOS -->
+            <section class="resultados {% if books %}show{% endif %}">
+              <div class="list-container">
+                {% if books %}
+                <h3>Posibles resultados:</h3>
+                  {% for libro in books %}
+                    <div class="result-container">
+                      <div class="container-info-libro">
+                        <h5>{{ libro.titulo }}</h5>
+                        <p><strong>Autores:</strong> {{ libro.autores | join(", ") }}</p>
+                        <p><strong>Editorial:</strong> {{ libro.editorial }}</p>
+                        <p><strong>Año de publicación:</strong> {{ libro.año_publicacion }}</p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                {% else %}
+                  <p>No se han encontrado libros.</p>
+                {% endif %}
+              </div>
+            </section>
           </div>
           <!-- TAB CARRITO -->
           <div class="tab-pane fade" id="carrito" role="tabpanel" aria-labelledby="carrito-tab">

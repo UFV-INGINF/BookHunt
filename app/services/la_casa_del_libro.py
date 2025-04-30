@@ -1,29 +1,33 @@
 import requests
-from app.models.libro import Libro
+from models.libro import Libro
 
 
-def construir_url_busqueda(isbn_libro: int) -> str:
+def construir_url_busqueda(isbn_libro: str) -> str:
     """
     Construye la URL para la API de Casa del Libro con el ISBN especificado.
 
     Args:
-        isbn_libro (int): ISBN del libro a buscar.
+        isbn_libro (str): ISBN del libro a buscar.
 
     Returns:
         str: URL completa para la API de Casa del Libro.
     """
 
     try:
-        isbn_libro = int(isbn_libro)
+        isbn_libro = isbn_libro.replace("-", "")
+        isbn_libro = isbn_libro.replace(" ", "")
+        isbn_int = int(isbn_libro)
+
     except ValueError:
+        print(isbn_libro)
         print("El ISBN debe ser un número entero.")
         return ""
 
-    return f"https://api.empathy.co/search/v1/query/cdl/isbnsearch?internal=true&query={isbn_libro}&origin=search_box:none&start=0&rows=24&instance=cdl&lang=es&scope=desktop&currency=EUR&store=ES"
+    return f"https://api.empathy.co/search/v1/query/cdl/isbnsearch?internal=true&query={isbn_int}&origin=search_box:none&start=0&rows=24&instance=cdl&lang=es&scope=desktop&currency=EUR&store=ES"
 
 
 def  scrape_casa_del_libro(isbn_libro):
-    """Scraper de Casa del Libro utilizando requests y BeautifulSoup.
+    """Scraper de Casa del Libro utilizando requests.
 
     Args:
         isbn_libro: ISBN del libro a buscar.
@@ -34,6 +38,10 @@ def  scrape_casa_del_libro(isbn_libro):
 
     libros = []
     url_libro = construir_url_busqueda(isbn_libro)
+
+    if url_libro == "":
+        print("Error al construir la URL.")
+        return libros
 
     response = requests.get(
         url_libro
@@ -51,9 +59,13 @@ def  scrape_casa_del_libro(isbn_libro):
         return libros
 
     titulo = book_info["__name"].title()
-    isbn_libro = book_info["ean"]
+    isbn_libro_scrap = book_info["ean"]
     precio = book_info["price"]["current"]
     enlace = book_info["__url"]
+
+    if isbn_libro != isbn_libro_scrap:
+        print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")
+        return libros
 
     gastos_envio = 0.0
 
@@ -67,7 +79,7 @@ def  scrape_casa_del_libro(isbn_libro):
 
     libro = Libro(
         nombre = titulo,
-        isbn = isbn_libro,
+        isbn = isbn_libro_scrap,
         tienda = "Casa del Libro",
         precio = precio,
         gastos_envio = gastos_envio,

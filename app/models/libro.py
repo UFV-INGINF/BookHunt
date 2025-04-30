@@ -7,7 +7,7 @@ class Libro:
         isbn=0,
         gastos_envio=0.0,
         enlace="",
-        fecha_entrega=0,
+        fecha_entrega="0 días",
     ):
         self.nombre = nombre
         self.isbn = isbn

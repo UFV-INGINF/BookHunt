@@ -1,61 +1,28 @@
-import re
-
 import requests
-from bs4 import BeautifulSoup
-from models.libro import Libro
-from playwright.sync_api import sync_playwright
+from app.models.libro import Libro
 
 
-def obtener_link_libro_playwright_casalibro(isbn):
-    """Obtiene el enlace del libro en Casa del Libro utilizando Playwright.
+def construir_url_busqueda(isbn_libro: int) -> str:
+    """
+    Construye la URL para la API de Casa del Libro con el ISBN especificado.
 
     Args:
-        isbn: ISBN del libro a buscar.
+        isbn_libro (int): ISBN del libro a buscar.
 
     Returns:
-        str: URL del libro o "No encontrado" si no se encuentra.
+        str: URL completa para la API de Casa del Libro.
     """
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(
-            headless=True
-        )  # Cambia a True si no necesitas ver el navegador
-        page = browser.new_page()
+    try:
+        isbn_libro = int(isbn_libro)
+    except ValueError:
+        print("El ISBN debe ser un número entero.")
+        return ""
 
-        # Simulación de usuario real
-        page.set_extra_http_headers(
-            {
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
-            }
-        )
-
-        # URL de búsqueda en Casa del Libro
-        search_url = f"https://www.casadellibro.com/?query={isbn}"
-        page.goto(search_url, timeout=60000)
-
-        # Esperar a que el enlace del libro aparezca (máximo 10 segundos)
-        try:
-            page.wait_for_selector("a.x-result-link", timeout=10000)
-            link_element = page.query_selector("a.x-result-link")
-        except:
-            link_element = None
-
-        if link_element:
-            book_href = link_element.get_attribute("href")
-            book_url = (
-                book_href
-                if "https" in book_href
-                else f"https://www.casadellibro.com{book_href}"
-            )
-        else:
-            book_url = "No encontrado"
-
-        browser.close()
-
-    return book_url
+    return f"https://api.empathy.co/search/v1/query/cdl/isbnsearch?internal=true&query={isbn_libro}&origin=search_box:none&start=0&rows=24&instance=cdl&lang=es&scope=desktop&currency=EUR&store=ES"
 
 
-def scrape_casa_del_libro(isbn_libro):
+def  scrape_casa_del_libro(isbn_libro):
     """Scraper de Casa del Libro utilizando requests y BeautifulSoup.
 
     Args:
@@ -66,57 +33,48 @@ def scrape_casa_del_libro(isbn_libro):
     """
 
     libros = []
-    url_libro = obtener_link_libro_playwright_casalibro(isbn_libro)
-
-    if url_libro == "No encontrado":
-        return libros
+    url_libro = construir_url_busqueda(isbn_libro)
 
     response = requests.get(
-        url_libro,
-        headers={
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
-        },
+        url_libro
     )
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    dict_response = response.json()
+    book_info = dict_response["catalog"]["content"][0]
 
-    # Extraer la información de la etiqueta title
-    title_match = soup.title.text
-    book_title = "Nombre no disponible"
-    price = 0.0
+    if response.status_code != 200:
+        print(f"Error: {response.status_code}")
+        return libros
+
+    if dict_response["catalog"]["numFound"] == 0:
+        print("No se han encontrado resultados.")
+        return libros
+
+    titulo = book_info["__name"].title()
+    isbn_libro = book_info["ean"]
+    precio = book_info["price"]["current"]
+    enlace = book_info["__url"]
+
     gastos_envio = 0.0
 
-    if title_match is not None:
-        parts = title_match.split(" | ")
+    # En la casa del libro, los gastos de envío son 0 si el precio es mayor a 19
+    if precio < 19:
+        gastos_envio = 2.99
 
-        if len(parts) >= 2:
-            book_title = parts[0].strip()
+    print(book_info["__name"].title())
+    print(book_info["ean"])
+    print(book_info["price"]["current"])
 
-            # Extracción de precio usando regex (buscando formato xx.xx EUR)
-            price_match = re.search(r'"(\d+\.\d+)\s+EUR"', response.text)
-            if price_match:
-                # Convertir el precio a float y aplicar descuento
-                price = float(price_match.group(1)) - (
-                    float(price_match.group(1)) * 0.05
-                )
-                # Redondear a 2 decimales
-                price = round(price, 2)
-
-                # En la casa del libro, los gastos de envío son 0 si el precio es mayor a 19
-                if price < 19:
-                    gastos_envio = 2.99
-
-    # El enlace será el de la página del libro (no de búsqueda)
-    enlace = url_libro
     libro = Libro(
-        nombre=book_title.capitalize(),
-        isbn=isbn_libro,
-        tienda="La Casa del Libro",
-        precio=price,
-        gastos_envio=gastos_envio,
-        enlace=enlace,
-        fecha_entrega="1 a 3 días",
+        nombre = titulo,
+        isbn = isbn_libro,
+        tienda = "Casa del Libro",
+        precio = precio,
+        gastos_envio = gastos_envio,
+        enlace = enlace,
+        fecha_entrega = "1 a 3 días"
     )
+
     libros.append(libro)
 
     return libros

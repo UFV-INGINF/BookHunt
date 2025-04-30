@@ -9,10 +9,10 @@ def scrape_el_corte_ingles(isbn_libro):
     url = f"https://www.elcorteingles.es/libros/search-nwx/1/?s={isbn_libro}&stype=text_box"
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         try:
-            
+
             page.goto(url, timeout=60000)
             page.wait_for_selector("div.product_preview-ppal", timeout=10000)
 

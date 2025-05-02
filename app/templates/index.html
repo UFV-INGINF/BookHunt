@@ -2,502 +2,528 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Book Hunt</title>
-    <link rel="icon" href="{{ url_for('static', filename='media/book-Hunt-No-title.ico') }}" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-        rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Hunt</title>
+  <link rel="icon" href="{{ url_for('static', filename='media/book-Hunt-No-title.ico') }}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
 </head>
 
 <body>
-    <main>
-        <div class="header">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid d-flex justify-content-between">
-                    <a class="navbar-brand" href="#">Book Hunt</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#servicios">Características</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contacto</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            <div class="header-pill">
-                <h5>¡NUEVO!</h5>
-            </div>
-            <h2>
-                Encuentra los <span>MEJORES PRECIOS</span> para tus
-                <br />libros favoritos
-            </h2>
-            <h3>
-                Compara precios de libros en múltiples tiendas online en
-                segundos
-                <br />y ahorra dinero en tus compras
-            </h3>
-            <a href="#buscador" style="
+  <main>
+    <div class="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid d-flex justify-content-between">
+          <a class="navbar-brand" href="#">Book Hunt</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#servicios">Características</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="header-pill">
+        <h5>¡NUEVO!</h5>
+      </div>
+      <h2>
+        Encuentra los <span>MEJORES PRECIOS</span> para tus
+        <br />libros favoritos
+      </h2>
+      <h3>
+        Compara precios de libros en múltiples tiendas online en
+        segundos
+        <br />y ahorra dinero en tus compras
+      </h3>
+      <a href="#buscador" style="
                         text-decoration: none;
                         color: inherit;
                         display: block;
                     ">
-                <div class="header-button">
-                    &nbsp &nbsp &nbsp
-                    <i class="fa-solid fa-bolt"> &nbsp &nbsp </i>
-                    ¡Empieza a Ahorrar!
-                </div>
-            </a>
+        <div class="header-button">
+          &nbsp &nbsp &nbsp
+          <i class="fa-solid fa-bolt"> &nbsp &nbsp </i>
+          ¡Empieza a Ahorrar!
         </div>
-    </main>
-    <section class="info" id="servicios">
-        <div class="header-info">
-            <h3>Potentes herramientas de búsqueda</h3>
-            <h5>
-                Encuentra exactamente lo que buscas con nuestras
-                herramientas <br />
-                especializadas
-            </h5>
-            <div class="carrusel-info">
-                <div class="carta-info">
-                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
-                            fill="#9333EA" />
-                        <path
-                            d="M23.6667 34.3333C29.5577 34.3333 34.3333 29.5577 34.3333 23.6667C34.3333 17.7756 29.5577 13 23.6667 13C17.7756 13 13 17.7756 13 23.6667C13 29.5577 17.7756 34.3333 23.6667 34.3333Z"
-                            stroke="#FFF9F9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M37 37L31.2667 31.2667" stroke="#FFF9F9" stroke-width="3.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                    <h4>Búsqueda por ISBN</h4>
-                    <p>
-                        Busca libros específicos usando su código ISBN único
-                        para encontrar el mejor precio
-                    </p>
-                    <a href="">Saber más →</a>
-                </div>
-                <div class="carta-info">
-                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
-                            fill="#2563EB" />
-                        <path d="M25 18.3333V37" stroke="white" stroke-width="3.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path
-                            d="M13 33C12.6464 33 12.3072 32.8595 12.0572 32.6095C11.8071 32.3594 11.6667 32.0203 11.6667 31.6667V14.3333C11.6667 13.9797 11.8071 13.6406 12.0572 13.3905C12.3072 13.1405 12.6464 13 13 13H19.6667C21.0811 13 22.4377 13.5619 23.4379 14.5621C24.4381 15.5623 25 16.9188 25 18.3333C25 16.9188 25.5619 15.5623 26.5621 14.5621C27.5623 13.5619 28.9188 13 30.3333 13H37C37.3536 13 37.6927 13.1405 37.9428 13.3905C38.1928 13.6406 38.3333 13.9797 38.3333 14.3333V31.6667C38.3333 32.0203 38.1928 32.3594 37.9428 32.6095C37.6927 32.8595 37.3536 33 37 33H29C27.9391 33 26.9217 33.4214 26.1716 34.1716C25.4214 34.9217 25 35.9391 25 37C25 35.9391 24.5786 34.9217 23.8284 34.1716C23.0783 33.4214 22.0609 33 21 33H13Z"
-                            stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <h4>Búsqueda por texto</h4>
-                    <p>
-                        Encuentra libros por un fragmento de texto cuando no
-                        conoces el título
-                    </p>
-                    <a href="">Saber más →</a>
-                </div>
-                <div class="carta-info">
-                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
-                            fill="#F59E0B" />
-                        <path
-                            d="M19.6666 38.3334C20.403 38.3334 21 37.7364 21 37C21 36.2636 20.403 35.6667 19.6666 35.6667C18.9303 35.6667 18.3333 36.2636 18.3333 37C18.3333 37.7364 18.9303 38.3334 19.6666 38.3334Z"
-                            stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path
-                            d="M34.3333 38.3334C35.0697 38.3334 35.6667 37.7364 35.6667 37C35.6667 36.2636 35.0697 35.6667 34.3333 35.6667C33.597 35.6667 33 36.2636 33 37C33 37.7364 33.597 38.3334 34.3333 38.3334Z"
-                            stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path
-                            d="M11.7333 11.7333H14.4L17.9467 28.2933C18.0768 28.8998 18.4142 29.442 18.901 29.8265C19.3877 30.211 19.9932 30.4138 20.6133 30.4H33.6533C34.2602 30.399 34.8486 30.1911 35.3214 29.8105C35.7941 29.4298 36.1229 28.8994 36.2533 28.3067L38.4533 18.4H15.8267"
-                            stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                    <h4>Carrito inteligente</h4>
-                    <p>
-                        Compara precios totales entre tiendas para encontrar
-                        la mejor oferta para todos tus libros
-                    </p>
-                    <a href="">Saber más →</a>
-                </div>
-            </div>
+      </a>
+    </div>
+  </main>
+  <section class="info" id="servicios">
+    <div class="header-info">
+      <h3>Potentes herramientas de búsqueda</h3>
+      <h5>
+        Encuentra exactamente lo que buscas con nuestras
+        herramientas <br />
+        especializadas
+      </h5>
+      <div class="carrusel-info">
+        <div class="carta-info">
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
+              fill="#9333EA" />
+            <path
+              d="M23.6667 34.3333C29.5577 34.3333 34.3333 29.5577 34.3333 23.6667C34.3333 17.7756 29.5577 13 23.6667 13C17.7756 13 13 17.7756 13 23.6667C13 29.5577 17.7756 34.3333 23.6667 34.3333Z"
+              stroke="#FFF9F9" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M37 37L31.2667 31.2667" stroke="#FFF9F9" stroke-width="3.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          <h4>Búsqueda por ISBN</h4>
+          <p>
+            Busca libros específicos usando su código ISBN único
+            para encontrar el mejor precio
+          </p>
+          <a href="">Saber más →</a>
         </div>
-    </section>
-    <section class="buscador-libros" id="buscador">
-      <div class="contenedor-texto-buscador">
-        <!-- TABS -->
-        <div class="tab-container">
+        <div class="carta-info">
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
+              fill="#2563EB" />
+            <path d="M25 18.3333V37" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M13 33C12.6464 33 12.3072 32.8595 12.0572 32.6095C11.8071 32.3594 11.6667 32.0203 11.6667 31.6667V14.3333C11.6667 13.9797 11.8071 13.6406 12.0572 13.3905C12.3072 13.1405 12.6464 13 13 13H19.6667C21.0811 13 22.4377 13.5619 23.4379 14.5621C24.4381 15.5623 25 16.9188 25 18.3333C25 16.9188 25.5619 15.5623 26.5621 14.5621C27.5623 13.5619 28.9188 13 30.3333 13H37C37.3536 13 37.6927 13.1405 37.9428 13.3905C38.1928 13.6406 38.3333 13.9797 38.3333 14.3333V31.6667C38.3333 32.0203 38.1928 32.3594 37.9428 32.6095C37.6927 32.8595 37.3536 33 37 33H29C27.9391 33 26.9217 33.4214 26.1716 34.1716C25.4214 34.9217 25 35.9391 25 37C25 35.9391 24.5786 34.9217 23.8284 34.1716C23.0783 33.4214 22.0609 33 21 33H13Z"
+              stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h4>Búsqueda por texto</h4>
+          <p>
+            Encuentra libros por un fragmento de texto cuando no
+            conoces el título
+          </p>
+          <a href="">Saber más →</a>
+        </div>
+        <div class="carta-info">
+          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
+              fill="#F59E0B" />
+            <path
+              d="M19.6666 38.3334C20.403 38.3334 21 37.7364 21 37C21 36.2636 20.403 35.6667 19.6666 35.6667C18.9303 35.6667 18.3333 36.2636 18.3333 37C18.3333 37.7364 18.9303 38.3334 19.6666 38.3334Z"
+              stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M34.3333 38.3334C35.0697 38.3334 35.6667 37.7364 35.6667 37C35.6667 36.2636 35.0697 35.6667 34.3333 35.6667C33.597 35.6667 33 36.2636 33 37C33 37.7364 33.597 38.3334 34.3333 38.3334Z"
+              stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path
+              d="M11.7333 11.7333H14.4L17.9467 28.2933C18.0768 28.8998 18.4142 29.442 18.901 29.8265C19.3877 30.211 19.9932 30.4138 20.6133 30.4H33.6533C34.2602 30.399 34.8486 30.1911 35.3214 29.8105C35.7941 29.4298 36.1229 28.8994 36.2533 28.3067L38.4533 18.4H15.8267"
+              stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <h4>Carrito inteligente</h4>
+          <p>
+            Compara precios totales entre tiendas para encontrar
+            la mejor oferta para todos tus libros
+          </p>
+          <a href="">Saber más →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="buscador-libros" id="buscador">
+    <div class="contenedor-texto-buscador">
+      <!-- TABS -->
+      <div class="tab-container">
         <ul class="nav nav-tabs" id="tabs-buscador" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="busqueda-tab" data-bs-toggle="tab" data-bs-target="#busqueda" type="button" role="tab" aria-controls="busqueda" aria-selected="true">
+            <button class="nav-link active" id="busqueda-tab" data-bs-toggle="tab" data-bs-target="#busqueda"
+              type="button" role="tab" aria-controls="busqueda" aria-selected="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                ISBN
+                <path
+                  d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                  stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              ISBN
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="texto-tab" data-bs-toggle="tab" data-bs-target="#texto" type="button" role="tab" aria-controls="busqueda por texto" aria-selected="false">
+            <button class="nav-link" id="texto-tab" data-bs-toggle="tab" data-bs-target="#texto" type="button"
+              role="tab" aria-controls="busqueda por texto" aria-selected="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                <path d="M12 10.4V20M12 10.4C12 8.15979 12 7.03969 11.564 6.18404C11.1805 5.43139 10.5686 4.81947 9.81596 4.43597C8.96031 4 7.84021 4 5.6 4H4.6C4.03995 4 3.75992 4 3.54601 4.10899C3.35785 4.20487 3.20487 4.35785 3.10899 4.54601C3 4.75992 3 5.03995 3 5.6V16.4C3 16.9601 3 17.2401 3.10899 17.454C3.20487 17.6422 3.35785 17.7951 3.54601 17.891C3.75992 18 4.03995 18 4.6 18H7.54668C8.08687 18 8.35696 18 8.61814 18.0466C8.84995 18.0879 9.0761 18.1563 9.29191 18.2506C9.53504 18.3567 9.75977 18.5065 10.2092 18.8062L12 20M12 10.4C12 8.15979 12 7.03969 12.436 6.18404C12.8195 5.43139 13.4314 4.81947 14.184 4.43597C15.0397 4 16.1598 4 18.4 4H19.4C19.9601 4 20.2401 4 20.454 4.10899C20.6422 4.20487 20.7951 4.35785 20.891 4.54601C21 4.75992 21 5.03995 21 5.6V16.4C21 16.9601 21 17.2401 20.891 17.454C20.7951 17.6422 20.6422 17.7951 20.454 17.891C20.2401 18 19.9601 18 19.4 18H16.4533C15.9131 18 15.643 18 15.3819 18.0466C15.15 18.0879 14.9239 18.1563 14.7081 18.2506C14.465 18.3567 14.2402 18.5065 13.7908 18.8062L12 20" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <path
+                  d="M12 10.4V20M12 10.4C12 8.15979 12 7.03969 11.564 6.18404C11.1805 5.43139 10.5686 4.81947 9.81596 4.43597C8.96031 4 7.84021 4 5.6 4H4.6C4.03995 4 3.75992 4 3.54601 4.10899C3.35785 4.20487 3.20487 4.35785 3.10899 4.54601C3 4.75992 3 5.03995 3 5.6V16.4C3 16.9601 3 17.2401 3.10899 17.454C3.20487 17.6422 3.35785 17.7951 3.54601 17.891C3.75992 18 4.03995 18 4.6 18H7.54668C8.08687 18 8.35696 18 8.61814 18.0466C8.84995 18.0879 9.0761 18.1563 9.29191 18.2506C9.53504 18.3567 9.75977 18.5065 10.2092 18.8062L12 20M12 10.4C12 8.15979 12 7.03969 12.436 6.18404C12.8195 5.43139 13.4314 4.81947 14.184 4.43597C15.0397 4 16.1598 4 18.4 4H19.4C19.9601 4 20.2401 4 20.454 4.10899C20.6422 4.20487 20.7951 4.35785 20.891 4.54601C21 4.75992 21 5.03995 21 5.6V16.4C21 16.9601 21 17.2401 20.891 17.454C20.7951 17.6422 20.6422 17.7951 20.454 17.891C20.2401 18 19.9601 18 19.4 18H16.4533C15.9131 18 15.643 18 15.3819 18.0466C15.15 18.0879 14.9239 18.1563 14.7081 18.2506C14.465 18.3567 14.2402 18.5065 13.7908 18.8062L12 20"
+                  stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
               Texto
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="carrito-tab" data-bs-toggle="tab" data-bs-target="#carrito" type="button" role="tab" aria-controls="carrito" aria-selected="false">
+            <button class="nav-link" id="carrito-tab" data-bs-toggle="tab" data-bs-target="#carrito" type="button"
+              role="tab" aria-controls="carrito" aria-selected="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                <path d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z" stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <path
+                  d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                  stroke="#71717a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
               Carrito inteligente
             </button>
           </li>
         </ul>
       </div>
-        <!-- CONTENIDO DE LOS TABS -->
-        <div class="tab-content" id="tabsContent">
-          <!-- TAB BÚSQUEDA -->
-          <div class="tab-pane fade show active" id="busqueda" role="tabpanel" aria-labelledby="busqueda-tab">
-            <div class="contenedor-titulo">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 50 50"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
+      <!-- CONTENIDO DE LOS TABS -->
+      <div class="tab-content" id="tabsContent">
+        <!-- TAB BÚSQUEDA -->
+        <div class="tab-pane fade show active" id="busqueda" role="tabpanel" aria-labelledby="busqueda-tab">
+          <div class="contenedor-titulo">
+            <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
+                fill="#4f46e5" />
+              <path
+                d="M23.6667 34.3333C29.5577 34.3333 34.3333 29.5577 34.3333 23.6667C34.3333 17.7756 29.5577 13 23.6667 13C17.7756 13 13 17.7756 13 23.6667C13 29.5577 17.7756 34.3333 23.6667 34.3333Z"
+                stroke="#FFF9F9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M37 37L31.2667 31.2667" stroke="#FFF9F9" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <h3>Búsqueda por ISBN</h3>
+          </div>
+          <div class="contenedor-buscador">
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
                 <path
-                  d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
-                  fill="#4f46e5"
-                />
-                <path
-                  d="M23.6667 34.3333C29.5577 34.3333 34.3333 29.5577 34.3333 23.6667C34.3333 17.7756 29.5577 13 23.6667 13C17.7756 13 13 17.7756 13 23.6667C13 29.5577 17.7756 34.3333 23.6667 34.3333Z"
-                  stroke="#FFF9F9"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M37 37L31.2667 31.2667"
-                  stroke="#FFF9F9"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                  d="M5 16V20M6 4V8M7 18H3M8 6H4M13 4L14.7528 8.44437C14.9407 8.92083 15.0347 9.15906 15.1786 9.35994C15.3061 9.538 15.462 9.69391 15.6401 9.82143C15.8409 9.9653 16.0792 10.0593 16.5556 10.2472L21 12L16.5556 13.7528C16.0792 13.9407 15.8409 14.0347 15.6401 14.1786C15.462 14.3061 15.3061 14.462 15.1786 14.6401C15.0347 14.8409 14.9407 15.0792 14.7528 15.5556L13 20L11.2472 15.5556C11.0593 15.0792 10.9653 14.8409 10.8214 14.6401C10.6939 14.462 10.538 14.3061 10.3599 14.1786C10.1591 14.0347 9.92083 13.9407 9.44437 13.7528L5 12L9.44437 10.2472C9.92083 10.0593 10.1591 9.9653 10.3599 9.82143C10.538 9.69391 10.6939 9.538 10.8214 9.35994C10.9653 9.15906 11.0593 8.92083 11.2472 8.44437L13 4Z"
+                  stroke="#3730b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
-              <h3>Búsqueda por ISBN</h3>
-            </div>
-            <div class="contenedor-buscador">
-              <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 16V20M6 4V8M7 18H3M8 6H4M13 4L14.7528 8.44437C14.9407 8.92083 15.0347 9.15906 15.1786 9.35994C15.3061 9.538 15.462 9.69391 15.6401 9.82143C15.8409 9.9653 16.0792 10.0593 16.5556 10.2472L21 12L16.5556 13.7528C16.0792 13.9407 15.8409 14.0347 15.6401 14.1786C15.462 14.3061 15.3061 14.462 15.1786 14.6401C15.0347 14.8409 14.9407 15.0792 14.7528 15.5556L13 20L11.2472 15.5556C11.0593 15.0792 10.9653 14.8409 10.8214 14.6401C10.6939 14.462 10.538 14.3061 10.3599 14.1786C10.1591 14.0347 9.92083 13.9407 9.44437 13.7528L5 12L9.44437 10.2472C9.92083 10.0593 10.1591 9.9653 10.3599 9.82143C10.538 9.69391 10.6939 9.538 10.8214 9.35994C10.9653 9.15906 11.0593 8.92083 11.2472 8.44437L13 4Z" stroke="#3730b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                Introduce uno o varios ISBN para encontrar los mejores precios
-              </p>
-              <form method="POST">
-                <textarea type="text" name="isbn_libro" placeholder="Introduce números ISBN (ej. 9788467033540, 9788467872385)"></textarea>
-                <button type="submit" id="search-button">
-                  <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M14 14L11.1333 11.1333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  Buscar mejores precios
-                </button>
-              </form>
-            </div>
-    
-            <!-- RESULTADOS -->
-            <section class="resultados {% if libros %}show{% endif %}">
-              <div class="list-container">
-                {% if libros %}
-                  {% for libro in libros %}
-                  <div class="result-container">
-                    <div class="pill-tienda">
-                      <h6>{{ libro.tienda }}</h6>
-                    </div>
-                    <div class="container-info-libro">
-                      <h5>{{ libro.nombre}}</h5>
-                      <p>Autor Libro</p>
-                      <p>ISBN: {{ libro.isbn }}</p>
-                    </div>
-                    <div class="container-precios">
-                      <div class="container-info-precios">
-                        IM
-                        <div class="texto-info-precios">
-                          <h6>Precio base</h6>
-                          <p>{{ libro.precio }}€</p>
-                        </div>
-                      </div>
-                      <div class="container-info-precios">
-                        IM
-                        <div class="texto-info-precios">
-                          <h6>Gastos de envío</h6>
-                          <p>{{ libro.gastos_envio }}€</p>
-                        </div>
-                      </div>
-                      <div class="container-info-precios">
-                        IM
-                        <div class="texto-info-precios">
-                          <h6>Tiempo de entrega</h6>
-                          <p>4-7 días</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="container-precio-compra">
-                      <h5>{{ libro.total }}€</h5>
-                      <div class="botones-compra">
-                        <a href="{{ libro.enlace }}">
-                          <button class="boton-ver">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" viewBox="0 0 24 24" fill="none">
-                              <path id="Vector" d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            Ver oferta
-                          </button>
-                        </a>
-                        <button class="boton-añadir">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" viewBox="0 0 24 24" fill="none">
-                            <path d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                          </svg>
-                          Añadir
-                        </button>
-                      </div>
+              Introduce uno o varios ISBN para encontrar los mejores precios
+            </p>
+            <form method="POST">
+              <textarea type="text" name="isbn_libro"
+                placeholder="Introduce números ISBN (ej. 9788467033540, 9788467872385)"></textarea>
+              <button type="submit" id="search-button">
+                <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M14 14L11.1333 11.1333" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+                Buscar mejores precios
+              </button>
+            </form>
+          </div>
+
+          <!-- RESULTADOS -->
+          <section class="resultados {% if libros %}show{% endif %}">
+            <div class="list-container">
+              {% if libros %}
+              {% for libro in libros %}
+              <div class="result-container">
+                <div class="pill-tienda">
+                  <h6>{{ libro.tienda }}</h6>
+                </div>
+                <div class="container-info-libro">
+                  <h5>{{ libro.nombre}}</h5>
+                  <p>Autor Libro</p>
+                  <p>ISBN: {{ libro.isbn }}</p>
+                </div>
+                <div class="container-precios">
+                  <div class="container-info-precios">
+                    <div class="texto-info-precios">
+                      <h6>Precio base</h6>
+                      <p>{{ libro.precio }}€</p>
                     </div>
                   </div>
-                  {% endfor %}
-                {% else %}
-                  <p>No se han encontrado libros.</p>
-                {% endif %}
-              </div>
-            </section>
-          </div>
-           <!-- TAB Búsqueda por texto -->
-          <div class="tab-pane fade" id="texto" role="tabpanel" aria-labelledby="texto-tab">
-            <div class="contenedor-titulo">
-              <svg width="40px" height="40px" viewBox="-5.52 -5.52 35.04 35.04" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-5.52" y="-5.52" width="35.04" height="35.04" rx="5.256" fill="#2563eb" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 10.4V20M12 10.4C12 8.15979 12 7.03969 11.564 6.18404C11.1805 5.43139 10.5686 4.81947 9.81596 4.43597C8.96031 4 7.84021 4 5.6 4H4.6C4.03995 4 3.75992 4 3.54601 4.10899C3.35785 4.20487 3.20487 4.35785 3.10899 4.54601C3 4.75992 3 5.03995 3 5.6V16.4C3 16.9601 3 17.2401 3.10899 17.454C3.20487 17.6422 3.35785 17.7951 3.54601 17.891C3.75992 18 4.03995 18 4.6 18H7.54668C8.08687 18 8.35696 18 8.61814 18.0466C8.84995 18.0879 9.0761 18.1563 9.29191 18.2506C9.53504 18.3567 9.75977 18.5065 10.2092 18.8062L12 20M12 10.4C12 8.15979 12 7.03969 12.436 6.18404C12.8195 5.43139 13.4314 4.81947 14.184 4.43597C15.0397 4 16.1598 4 18.4 4H19.4C19.9601 4 20.2401 4 20.454 4.10899C20.6422 4.20487 20.7951 4.35785 20.891 4.54601C21 4.75992 21 5.03995 21 5.6V16.4C21 16.9601 21 17.2401 20.891 17.454C20.7951 17.6422 20.6422 17.7951 20.454 17.891C20.2401 18 19.9601 18 19.4 18H16.4533C15.9131 18 15.643 18 15.3819 18.0466C15.15 18.0879 14.9239 18.1563 14.7081 18.2506C14.465 18.3567 14.2402 18.5065 13.7908 18.8062L12 20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-              <h3>Búsqueda por fragmento</h3>
-            </div>
-            <div class="contenedor-buscador contenedor-buscador-texto">
-              <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
-                  <path d="M5 16V20M6 4V8M7 18H3M8 6H4M13 4L14.7528 8.44437C14.9407 8.92083 15.0347 9.15906 15.1786 9.35994C15.3061 9.538 15.462 9.69391 15.6401 9.82143C15.8409 9.9653 16.0792 10.0593 16.5556 10.2472L21 12L16.5556 13.7528C16.0792 13.9407 15.8409 14.0347 15.6401 14.1786C15.462 14.3061 15.3061 14.462 15.1786 14.6401C15.0347 14.8409 14.9407 15.0792 14.7528 15.5556L13 20L11.2472 15.5556C11.0593 15.0792 10.9653 14.8409 10.8214 14.6401C10.6939 14.462 10.538 14.3061 10.3599 14.1786C10.1591 14.0347 9.92083 13.9407 9.44437 13.7528L5 12L9.44437 10.2472C9.92083 10.0593 10.1591 9.9653 10.3599 9.82143C10.538 9.69391 10.6939 9.538 10.8214 9.35994C10.9653 9.15906 11.0593 8.92083 11.2472 8.44437L13 4Z" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  Introduce un fragmento de un libro cuyo nombre recordar no quieres
-              </p>
-              <form method="POST" action="/buscar_fragmento">
-                <textarea type="text" name="fragmento_libro" placeholder="Introduce el fragmento de un libro (ej. En un lugar de la mancha, cuyo nombre recordar no quiero...)"></textarea>
-                <button type="submit" id="search-text-button">
-                  <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M14 14L11.1333 11.1333" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  Buscar Libro
-                </button>
-              </form>
-            </div>
-            <!-- RESULTADOS -->
-            <section class="resultados {% if books %}show{% endif %}">
-              <div class="list-container">
-                {% if books %}
-                <h3>Posibles resultados:</h3>
-                  {% for libro in books %}
-                    <div class="result-container">
-                      <div class="container-info-libro">
-                        <h5>{{ libro.titulo }}</h5>
-                        <p><strong>Autores:</strong> {{ libro.autores | join(", ") }}</p>
-                        <p><strong>Editorial:</strong> {{ libro.editorial }}</p>
-                        <p><strong>Año de publicación:</strong> {{ libro.año_publicacion }}</p>
-                      </div>
+                  <div class="container-info-precios">
+                    <div class="texto-info-precios">
+                      <h6>Gastos de envío</h6>
+                      <p>{{ libro.gastos_envio }}€</p>
                     </div>
-                  {% endfor %}
-                {% else %}
-                  <p>No se han encontrado libros.</p>
-                {% endif %}
+                  </div>
+                  <div class="container-info-precios">
+                    <div class="texto-info-precios">
+                      <h6>Tiempo de entrega</h6>
+                      <p>{{ libro.fecha_entrega }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container-precio-compra">
+                  <h5>{{ libro.total }}€</h5>
+                  <div class="botones-compra">
+                    <a href="{{ libro.enlace }}">
+                      <button class="boton-ver">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" viewBox="0 0 24 24"
+                          fill="none">
+                          <path id="Vector"
+                            d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                            stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        Ver oferta
+                      </button>
+                    </a>
+                    <button class="boton-añadir">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="17px" height="17px" viewBox="0 0 24 24"
+                        fill="none">
+                        <path
+                          d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                          stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      Añadir
+                    </button>
+                  </div>
+                </div>
               </div>
-            </section>
-          </div>
-          <!-- TAB CARRITO -->
-          <div class="tab-pane fade" id="carrito" role="tabpanel" aria-labelledby="carrito-tab">
-            <div class="contenedor-titulo">
-              <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z" fill="#F59E0B"></path>
-                <path d="M19.6666 38.3334C20.403 38.3334 21 37.7364 21 37C21 36.2636 20.403 35.6667 19.6666 35.6667C18.9303 35.6667 18.3333 36.2636 18.3333 37C18.3333 37.7364 18.9303 38.3334 19.6666 38.3334Z" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M34.3333 38.3334C35.0697 38.3334 35.6667 37.7364 35.6667 37C35.6667 36.2636 35.0697 35.6667 34.3333 35.6667C33.597 35.6667 33 36.2636 33 37C33 37.7364 33.597 38.3334 34.3333 38.3334Z" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M11.7333 11.7333H14.4L17.9467 28.2933C18.0768 28.8998 18.4142 29.442 18.901 29.8265C19.3877 30.211 19.9932 30.4138 20.6133 30.4H33.6533C34.2602 30.399 34.8486 30.1911 35.3214 29.8105C35.7941 29.4298 36.1229 28.8994 36.2533 28.3067L38.4533 18.4H15.8267" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
-              </svg>
-              <h3>Carrito Inteligente</h3>
+              {% endfor %}
+              {% else %}
+              <p>No se han encontrado libros.</p>
+              {% endif %}
             </div>
-            <!-- Aquí irá tu contenido del carrito -->
-            <p>Contenido del carrito inteligente</p>
-            <div id="carrito-lista"></div>
-            <button class="boton-limpiar">Limpiar carrito</button>
+          </section>
+        </div>
+        <!-- TAB Búsqueda por texto -->
+        <div class="tab-pane fade" id="texto" role="tabpanel" aria-labelledby="texto-tab">
+          <div class="contenedor-titulo">
+            <svg width="40px" height="40px" viewBox="-5.52 -5.52 35.04 35.04" fill="none"
+              xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+              <g id="SVGRepo_bgCarrier" stroke-width="0">
+                <rect x="-5.52" y="-5.52" width="35.04" height="35.04" rx="5.256" fill="#2563eb" strokewidth="0"></rect>
+              </g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M12 10.4V20M12 10.4C12 8.15979 12 7.03969 11.564 6.18404C11.1805 5.43139 10.5686 4.81947 9.81596 4.43597C8.96031 4 7.84021 4 5.6 4H4.6C4.03995 4 3.75992 4 3.54601 4.10899C3.35785 4.20487 3.20487 4.35785 3.10899 4.54601C3 4.75992 3 5.03995 3 5.6V16.4C3 16.9601 3 17.2401 3.10899 17.454C3.20487 17.6422 3.35785 17.7951 3.54601 17.891C3.75992 18 4.03995 18 4.6 18H7.54668C8.08687 18 8.35696 18 8.61814 18.0466C8.84995 18.0879 9.0761 18.1563 9.29191 18.2506C9.53504 18.3567 9.75977 18.5065 10.2092 18.8062L12 20M12 10.4C12 8.15979 12 7.03969 12.436 6.18404C12.8195 5.43139 13.4314 4.81947 14.184 4.43597C15.0397 4 16.1598 4 18.4 4H19.4C19.9601 4 20.2401 4 20.454 4.10899C20.6422 4.20487 20.7951 4.35785 20.891 4.54601C21 4.75992 21 5.03995 21 5.6V16.4C21 16.9601 21 17.2401 20.891 17.454C20.7951 17.6422 20.6422 17.7951 20.454 17.891C20.2401 18 19.9601 18 19.4 18H16.4533C15.9131 18 15.643 18 15.3819 18.0466C15.15 18.0879 14.9239 18.1563 14.7081 18.2506C14.465 18.3567 14.2402 18.5065 13.7908 18.8062L12 20"
+                  stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </g>
+            </svg>
+            <h3>Búsqueda por fragmento</h3>
+          </div>
+          <div class="contenedor-buscador contenedor-buscador-texto">
+            <p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M5 16V20M6 4V8M7 18H3M8 6H4M13 4L14.7528 8.44437C14.9407 8.92083 15.0347 9.15906 15.1786 9.35994C15.3061 9.538 15.462 9.69391 15.6401 9.82143C15.8409 9.9653 16.0792 10.0593 16.5556 10.2472L21 12L16.5556 13.7528C16.0792 13.9407 15.8409 14.0347 15.6401 14.1786C15.462 14.3061 15.3061 14.462 15.1786 14.6401C15.0347 14.8409 14.9407 15.0792 14.7528 15.5556L13 20L11.2472 15.5556C11.0593 15.0792 10.9653 14.8409 10.8214 14.6401C10.6939 14.462 10.538 14.3061 10.3599 14.1786C10.1591 14.0347 9.92083 13.9407 9.44437 13.7528L5 12L9.44437 10.2472C9.92083 10.0593 10.1591 9.9653 10.3599 9.82143C10.538 9.69391 10.6939 9.538 10.8214 9.35994C10.9653 9.15906 11.0593 8.92083 11.2472 8.44437L13 4Z"
+                  stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              Introduce un fragmento de un libro cuyo nombre recordar no quieres
+            </p>
+            <form method="POST" action="/buscar_fragmento">
+              <textarea type="text" name="fragmento_libro"
+                placeholder="Introduce el fragmento de un libro (ej. En un lugar de la mancha, cuyo nombre recordar no quiero...)"></textarea>
+              <button type="submit" id="search-text-button">
+                <svg width="16" height="16" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
+                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M14 14L11.1333 11.1333" stroke="white" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </svg>
+                Buscar Libro
+              </button>
+            </form>
+          </div>
+          <!-- RESULTADOS -->
+          <section class="resultados {% if books %}show{% endif %}">
+            <div class="list-container">
+              {% if books %}
+              <h3>Posibles resultados:</h3>
+              {% for libro in books %}
+              <div class="result-container">
+                <div class="container-info-libro">
+                  <h5>{{ libro.titulo }}</h5>
+                  <p><strong>Autores:</strong> {{ libro.autores | join(", ") }}</p>
+                  <p><strong>Editorial:</strong> {{ libro.editorial }}</p>
+                  <p><strong>Año de publicación:</strong> {{ libro.año_publicacion }}</p>
+                </div>
+              </div>
+              {% endfor %}
+              {% else %}
+              <p>No se han encontrado libros.</p>
+              {% endif %}
+            </div>
+          </section>
+        </div>
+        <!-- TAB CARRITO -->
+        <div class="tab-pane fade" id="carrito" role="tabpanel" aria-labelledby="carrito-tab">
+          <div class="contenedor-titulo">
+            <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0 12C0 5.37258 5.37258 0 12 0H38C44.6274 0 50 5.37258 50 12V38C50 44.6274 44.6274 50 38 50H12C5.37258 50 0 44.6274 0 38V12Z"
+                fill="#F59E0B"></path>
+              <path
+                d="M19.6666 38.3334C20.403 38.3334 21 37.7364 21 37C21 36.2636 20.403 35.6667 19.6666 35.6667C18.9303 35.6667 18.3333 36.2636 18.3333 37C18.3333 37.7364 18.9303 38.3334 19.6666 38.3334Z"
+                stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path
+                d="M34.3333 38.3334C35.0697 38.3334 35.6667 37.7364 35.6667 37C35.6667 36.2636 35.0697 35.6667 34.3333 35.6667C33.597 35.6667 33 36.2636 33 37C33 37.7364 33.597 38.3334 34.3333 38.3334Z"
+                stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              <path
+                d="M11.7333 11.7333H14.4L17.9467 28.2933C18.0768 28.8998 18.4142 29.442 18.901 29.8265C19.3877 30.211 19.9932 30.4138 20.6133 30.4H33.6533C34.2602 30.399 34.8486 30.1911 35.3214 29.8105C35.7941 29.4298 36.1229 28.8994 36.2533 28.3067L38.4533 18.4H15.8267"
+                stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            <h3>Carrito Inteligente</h3>
+          </div>
+          <!-- Aquí irá tu contenido del carrito -->
+          <p>Contenido del carrito inteligente</p>
+          <div id="carrito-lista"></div>
+          <button class="boton-limpiar">Limpiar carrito</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonios">
+    <div class="testimonials-info">
+      <h3>Lo que dicen nuestros usuarios</h3>
+      <h5>Miles de lectores ya están ahorrando con Book Hunt</h5>
+    </div>
+
+    <div class="testimonials-container">
+      <!-- Testimonio 1 -->
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "¡Increíble! Ahorré más de 50€ en mi última compra de
+          libros para la universidad gracias a Book Hunt. ¡No
+          puedo creer que no lo descubriera antes!"
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MG</div>
+          <div class="author-info">
+            <span class="author-name">María García</span>
+            <span class="author-role">Estudiante de Literatura</span>
           </div>
         </div>
       </div>
-    </section>    
 
-    <section class="testimonials" id="testimonios">
-        <div class="testimonials-info">
-            <h3>Lo que dicen nuestros usuarios</h3>
-            <h5>Miles de lectores ya están ahorrando con Book Hunt</h5>
-        </div>
-
-        <div class="testimonials-container">
-            <!-- Testimonio 1 -->
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "¡Increíble! Ahorré más de 50€ en mi última compra de
-                    libros para la universidad gracias a Book Hunt. ¡No
-                    puedo creer que no lo descubriera antes!"
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">MG</div>
-                    <div class="author-info">
-                        <span class="author-name">María García</span>
-                        <span class="author-role">Estudiante de Literatura</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonio 2 -->
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "Como ávido lector, Book Hunt se ha convertido en mi
-                    herramienta imprescindible. La función de búsqueda por
-                    ISBN es rápida y precisa. ¡Altamente recomendado!"
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">JR</div>
-                    <div class="author-info">
-                        <span class="author-name">Javier Rodríguez</span>
-                        <span class="author-role">Profesor de Historia</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Testimonio 3 -->
-            <div class="testimonial-card">
-                <p class="testimonial-text">
-                    "El carrito inteligente es genial. Me ayudó a encontrar
-                    la mejor combinación de tiendas para comprar toda la
-                    lista de libros de texto de mis hijos. ¡Ahorré casi un
-                    30%!"
-                </p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">AL</div>
-                    <div class="author-info">
-                        <span class="author-name">Ana López</span>
-                        <span class="author-role">Madre de Familia</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="hero">
-        <h1>¡Empieza a ahorrar en tus libros hoy mismo!</h1>
-        <p>
-            Únete a miles de lectores inteligentes que ya están ahorrando
-            dinero <br />
-            en sus compras de libros
+      <!-- Testimonio 2 -->
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "Como ávido lector, Book Hunt se ha convertido en mi
+          herramienta imprescindible. La función de búsqueda por
+          ISBN es rápida y precisa. ¡Altamente recomendado!"
         </p>
-
-        <a href="#buscador" style="text-decoration: none; color: inherit; display: block">
-            <div class="cta-button">
-                <i class="fa-solid fa-bolt"> &nbsp &nbsp </i>
-                ¡Comienza gratis!
-            </div>
-        </a>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <!-- Columna 1: Logo y descripción -->
-                <div class="col-md-5">
-                    <div class="footer-logo">
-                        <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M25 18.3333V37" stroke="#facc15" stroke-width="3" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path
-                                d="M13 33C12.6464 33 12.3072 32.8595 12.0572 32.6095C11.8071 32.3594 11.6667 32.0203 11.6667 31.6667V14.3333C11.6667 13.9797 11.8071 13.6406 12.0572 13.3905C12.3072 13.1405 12.6464 13 13 13H19.6667C21.0811 13 22.4377 13.5619 23.4379 14.5621C24.4381 15.5623 25 16.9188 25 18.3333C25 16.9188 25.5619 15.5623 26.5621 14.5621C27.5623 13.5619 28.9188 13 30.3333 13H37C37.3536 13 37.6927 13.1405 37.9428 13.3905C38.1928 13.6406 38.3333 13.9797 38.3333 14.3333V31.6667C38.3333 32.0203 38.1928 32.3594 37.9428 32.6095C37.6927 32.8595 37.3536 33 37 33H29C27.9391 33 26.9217 33.4214 26.1716 34.1716C25.4214 34.9217 25 35.9391 25 37C25 35.9391 24.5786 34.9217 23.8284 34.1716C23.0783 33.4214 22.0609 33 21 33H13Z"
-                                stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        Book Hunt
-                    </div>
-                    <p class="text-gray text-with-padding">
-                        La mejor herramienta para encontrar los mejores
-                        <br />
-                        precios de libros en línea.
-                    </p>
-                </div>
-
-                <!-- Columna 2: Enlaces rápidos -->
-                <div class="col-md-3">
-                    <h5 class="text-white">Enlaces rápidos</h5>
-                    <div class="footer-links text-gray">
-                        <a href="#">Inicio</a>
-                        <a href="#servicios">Características</a>
-                        <a href="#testimonios">Testimonios</a>
-                        <a href="#suscripcion">Contacto</a>
-                    </div>
-                </div>
-
-                <!-- Columna 3: Suscripción -->
-                <div class="col-md-4" id="suscripcion">
-                    <h5 class="text-white">Suscríbete</h5>
-                    <p class="text-gray">
-                        Recibe las últimas noticias y ofertas <br />
-                        especiales.
-                    </p>
-                    <div class="footer-subscribe d-flex">
-                        <input type="email" placeholder="Tu email" />
-                        <button>Enviar</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Línea final -->
-            <div class="footer-bottom">
-                <p>© 2025 Book Hunt. Todos los derechos reservados.</p>
-            </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">JR</div>
+          <div class="author-info">
+            <span class="author-name">Javier Rodríguez</span>
+            <span class="author-role">Profesor de Historia</span>
+          </div>
         </div>
-    </footer>
-    <div class="loading-overlay"></div>
-    <div class="loading-spinner"></div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+      </div>
 
-    <script src="https://kit.fontawesome.com/4d27b876b2.js" crossorigin="anonymous"></script>
-    <script src="../static/scripts/carrito.js"></script>
+      <!-- Testimonio 3 -->
+      <div class="testimonial-card">
+        <p class="testimonial-text">
+          "El carrito inteligente es genial. Me ayudó a encontrar
+          la mejor combinación de tiendas para comprar toda la
+          lista de libros de texto de mis hijos. ¡Ahorré casi un
+          30%!"
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AL</div>
+          <div class="author-info">
+            <span class="author-name">Ana López</span>
+            <span class="author-role">Madre de Familia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-      // Para ambos formularios
-      document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', function(e) {
-            document.querySelector('.loading-overlay').style.display = 'block';
-            document.querySelector('.loading-spinner').style.display = 'block';
-        });
+  <section class="hero">
+    <h1>¡Empieza a ahorrar en tus libros hoy mismo!</h1>
+    <p>
+      Únete a miles de lectores inteligentes que ya están ahorrando
+      dinero <br />
+      en sus compras de libros
+    </p>
+
+    <a href="#buscador" style="text-decoration: none; color: inherit; display: block">
+      <div class="cta-button">
+        <i class="fa-solid fa-bolt"> &nbsp &nbsp </i>
+        ¡Comienza gratis!
+      </div>
+    </a>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Columna 1: Logo y descripción -->
+        <div class="col-md-5">
+          <div class="footer-logo">
+            <svg width="40" height="40" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M25 18.3333V37" stroke="#facc15" stroke-width="3" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path
+                d="M13 33C12.6464 33 12.3072 32.8595 12.0572 32.6095C11.8071 32.3594 11.6667 32.0203 11.6667 31.6667V14.3333C11.6667 13.9797 11.8071 13.6406 12.0572 13.3905C12.3072 13.1405 12.6464 13 13 13H19.6667C21.0811 13 22.4377 13.5619 23.4379 14.5621C24.4381 15.5623 25 16.9188 25 18.3333C25 16.9188 25.5619 15.5623 26.5621 14.5621C27.5623 13.5619 28.9188 13 30.3333 13H37C37.3536 13 37.6927 13.1405 37.9428 13.3905C38.1928 13.6406 38.3333 13.9797 38.3333 14.3333V31.6667C38.3333 32.0203 38.1928 32.3594 37.9428 32.6095C37.6927 32.8595 37.3536 33 37 33H29C27.9391 33 26.9217 33.4214 26.1716 34.1716C25.4214 34.9217 25 35.9391 25 37C25 35.9391 24.5786 34.9217 23.8284 34.1716C23.0783 33.4214 22.0609 33 21 33H13Z"
+                stroke="#facc15" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Book Hunt
+          </div>
+          <p class="text-gray text-with-padding">
+            La mejor herramienta para encontrar los mejores
+            <br />
+            precios de libros en línea.
+          </p>
+        </div>
+
+        <!-- Columna 2: Enlaces rápidos -->
+        <div class="col-md-3">
+          <h5 class="text-white">Enlaces rápidos</h5>
+          <div class="footer-links text-gray">
+            <a href="#">Inicio</a>
+            <a href="#servicios">Características</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#suscripcion">Contacto</a>
+          </div>
+        </div>
+
+        <!-- Columna 3: Suscripción -->
+        <div class="col-md-4" id="suscripcion">
+          <h5 class="text-white">Suscríbete</h5>
+          <p class="text-gray">
+            Recibe las últimas noticias y ofertas <br />
+            especiales.
+          </p>
+          <div class="footer-subscribe d-flex">
+            <input type="email" placeholder="Tu email" />
+            <button>Enviar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Línea final -->
+      <div class="footer-bottom">
+        <p>© 2025 Book Hunt. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  <div class="loading-overlay"></div>
+  <div class="loading-spinner"></div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script src="https://kit.fontawesome.com/4d27b876b2.js" crossorigin="anonymous"></script>
+  <script src="../static/scripts/carrito.js"></script>
+
+  <script>
+    // Para ambos formularios
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', function (e) {
+        document.querySelector('.loading-overlay').style.display = 'block';
+        document.querySelector('.loading-spinner').style.display = 'block';
       });
+    });
 
-      // Reset al cargar la página
-      window.addEventListener('load', function() {
-        document.querySelector('.loading-overlay').style.display = 'none';
-        document.querySelector('.loading-spinner').style.display = 'none';
-      });
-      </script>
+    // Reset al cargar la página
+    window.addEventListener('load', function () {
+      document.querySelector('.loading-overlay').style.display = 'none';
+      document.querySelector('.loading-spinner').style.display = 'none';
+    });
+  </script>
 </body>
 
 </html>

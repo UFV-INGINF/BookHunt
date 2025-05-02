@@ -37,7 +37,7 @@ def scrape_el_corte_ingles(isbn_libro):
                     precio=precio,
                     gastos_envio=0.0,  # No lo indican fácil
                     enlace=enlace,
-                    fecha_entrega=0,
+                    fecha_entrega= "No hay información",
                 )
                 libros.append(libro)
             else:
@@ -50,3 +50,4 @@ def scrape_el_corte_ingles(isbn_libro):
             browser.close()
 
     return libros
+

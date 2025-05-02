@@ -1,7 +1,11 @@
-import requests  # type: ignore
-from flask import Flask, request  # type: ignore
-from flask import jsonify  # type: ignore
+import requests
+from flask import Flask, jsonify, request
 from scraper import scrapear_libros
+from utilities.quick_sort import ordenar_libros
+
+
+GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes?q="
+
 
 app = Flask(__name__)
 
@@ -9,6 +13,7 @@ app = Flask(__name__)
 @app.route("/api/<isbn>", methods=["GET"])
 def get_books(isbn):
     libros = scrapear_libros(isbn)
+    libros = ordenar_libros(libros, criterio="precio")
 
     libros_json = [
         {
@@ -22,9 +27,6 @@ def get_books(isbn):
         for libro in libros
     ]
     return jsonify(libros_json)
-
-
-GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes?q="
 
 
 @app.route("/fragmento", methods=["POST"])

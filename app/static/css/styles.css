@@ -404,7 +404,6 @@ p {
 
     width: 100%;
     min-height: 100%;
-
 }
 
 .contenedor-buscador textarea::placeholder {
@@ -963,6 +962,7 @@ p {
     outline: none;
     /* Quitar el borde al hacer foco */
 }
+
 /* Spinner central */
 .loading-spinner {
     display: none;
@@ -980,8 +980,13 @@ p {
 }
 
 @keyframes spin {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 /* Overlay de fondo */
@@ -994,4 +999,211 @@ p {
     height: 100%;
     background: rgba(255, 255, 255, 0.8);
     z-index: 9998;
+}
+
+
+/*MEDIA QUERY*/
+
+@media only screen and (max-width: 600px) {
+    .nav-header {
+        display: none;
+    }
+
+    .header h2 {
+        overflow: hidden;
+        font-size: 1.6em;
+    }
+
+    .header h2 span {
+        color: #FDE047;
+    }
+
+    .header h3 {
+        font-size: 1em;
+    }
+
+    .info .header-info {
+        padding-top: 3em;
+        padding-bottom: 6em;
+    }
+
+    .info .header-info h3 {
+        font-size: 2em;
+        font-weight: 800;
+    }
+
+    .header-info h5 {
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .carrusel-info {
+        margin-top: 7vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+    }
+
+    .carta-info {
+        gap: 1em;
+        width: 17em;
+        height: 18em;
+        padding: 20px;
+    }
+
+    .contenedor-texto-buscador {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: 2em;
+
+        padding-top: 20px;
+        padding-left: 30px;
+        padding-right: 30px;
+        width: 90vw;
+    }
+
+    .buscador-libros {
+        padding-top: 4em;
+        padding-bottom: 4em;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #eef2ff;
+        text-align: center;
+    }
+
+    .tab-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        background-color: #e0e7ff;
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .resultados {
+        width: 100%;
+        padding: 0px;
+        padding-top: 1em;
+    }
+
+    .result-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 1.2em;
+
+        border-style: solid;
+        border-width: 1px;
+        border-color: grey;
+        border-radius: 10px;
+    }
+
+    .container-info-libro {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .container-info-libro h5 {
+        overflow: hidden;
+        font-size: 1.5em;
+        font-weight: 700;
+    }
+
+    .container-info-libro p {
+        overflow: hidden;
+        margin-bottom: 0px;
+        color: #7e7e87;
+    }
+
+    .container-precios {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-left: 0.2em;
+        margin-right: 0.2em;
+    }
+
+    .container-info-precios {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        gap: 1em;
+    }
+
+    .img-precios {
+        display: none;
+    }
+
+    .texto-info-precios {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .texto-info-precios h6 {
+        overflow: hidden;
+        font-size: 0.8em;
+    }
+
+    .texto-info-precios p {
+        margin-left: 1em;
+    }
+
+    .container-precio-compra {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .container-precio-compra h5 {
+        overflow: hidden;
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #4f46e5;
+    }
+
+    .botones-compra {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+    }
+
+    .testimonials h3 {
+        font-size: 1.2em;
+    }
+
+    .testimonials h5 {
+        font-size: 1em;
+    }
+
+    .item-carrito {
+        display: flex;
+        flex-direction: column;
+        background-color: #e9edff;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        gap: 15px;
+    }
+
+    .footer {
+        height: 100vh;
+    }
 }

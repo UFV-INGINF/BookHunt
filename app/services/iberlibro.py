@@ -72,7 +72,7 @@ def scrape_iberlibro(isbn_libro):
                 precio=precio,
                 gastos_envio=gastos_envio,
                 enlace=enlace,
-                fecha_entrega=0,
+                fecha_entrega="No hay información",
             )
             libros.append(libro)
 

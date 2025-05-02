@@ -14,8 +14,6 @@ def construir_url_busqueda(isbn_libro: str) -> str:
     """
 
     try:
-        isbn_libro = isbn_libro.replace("-", "")
-        isbn_libro = isbn_libro.replace(" ", "")
         isbn_int = int(isbn_libro)
 
     except ValueError:
@@ -37,6 +35,10 @@ def  scrape_casa_del_libro(isbn_libro):
     """
 
     libros = []
+
+    isbn_libro = isbn_libro.replace("-", "")
+    isbn_libro = isbn_libro.replace(" ", "")
+
     url_libro = construir_url_busqueda(isbn_libro)
 
     if url_libro == "":

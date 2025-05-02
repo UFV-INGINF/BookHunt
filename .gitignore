@@ -211,6 +211,5 @@ tmp/
 output/
 results/
 *.csv
-*.json
 *.xlsx
 *.db

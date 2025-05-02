@@ -1005,7 +1005,7 @@ p {
 /*MEDIA QUERY*/
 
 @media only screen and (max-width: 600px) {
-    .nav {
+    .nav-header {
         display: none;
     }
 
@@ -1183,41 +1183,27 @@ p {
         gap: 1em;
     }
 
-    .boton-añadir {
-        text-decoration: none;
-        padding: 6px 20px;
-        background: linear-gradient(to right, #4f47e5, #2563eb);
-        font-family: 'Poppins', sans-serif;
-        color: white;
-
-        border-radius: 10px;
-        border-color: transparent;
-
-        transition: all 0.5;
+    .testimonials h3 {
+        font-size: 1.2em;
     }
 
-    .boton-añadir:hover {
-        background: #3d3bcc;
+    .testimonials h5 {
+        font-size: 1em;
     }
 
-
-    .boton-añadir svg {
-        margin-right: 0.7em;
+    .item-carrito {
+        display: flex;
+        flex-direction: column;
+        background-color: #e9edff;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+        align-items: center;
+        gap: 15px;
     }
 
-    .boton-ver {
-        text-decoration: none;
-        padding: 6px 20px;
-        background: transparent;
-        font-family: 'Poppins', sans-serif;
-        color: black;
-
-        border-radius: 10px;
-        border-width: 0.5px;
-        border-style: solid;
-        border-color: #c7d2fe;
-
-        transition: all 0.5;
+    .footer {
+        height: 100vh;
     }
-
 }

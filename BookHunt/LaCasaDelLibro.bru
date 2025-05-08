@@ -1,0 +1,24 @@
+meta {
+  name: LaCasaDelLibro
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://api.empathy.co/search/v1/query/cdl/isbnsearch?internal=true&query=9788445019580&origin=search_box:none&start=0&rows=24&instance=cdl&lang=es&scope=desktop&currency=EUR&store=ES
+  body: none
+  auth: inherit
+}
+
+params:query {
+  internal: true
+  query: 9788445019580
+  origin: search_box:none
+  start: 0
+  rows: 24
+  instance: cdl
+  lang: es
+  scope: desktop
+  currency: EUR
+  store: ES
+}

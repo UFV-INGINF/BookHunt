@@ -1,6 +1,9 @@
+import os
+
 import requests
-from flask import Flask, render_template, request, jsonify  # type: ignore
-from scraper import scrapear_libros  # Importamos la función de scraping desde scrape.py
+from flask import Flask, jsonify, render_template, request  # type: ignore
+from scraper import \
+    scrapear_libros  # Importamos la función de scraping desde scrape.py
 
 GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes?q="
 
@@ -52,4 +55,5 @@ def buscar_por_fragmento():
     return render_template("index.html", books=books)
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8081)
+    port = int(os.environ.get("PORT", 5000))  # Usamos el puerto que Heroku define
+    app.run(debug=False, host='0.0.0.0', port=port)

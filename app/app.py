@@ -2,7 +2,7 @@ import os
 
 import requests
 from flask import Flask, jsonify, render_template, request  # type: ignore
-from scraper import \
+from app.scraper import \
     scrapear_libros  # Importamos la función de scraping desde scrape.py
 
 GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes?q="

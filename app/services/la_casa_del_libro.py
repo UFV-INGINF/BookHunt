@@ -1,5 +1,5 @@
 import requests
-from models.libro import Libro
+from app.models.libro import Libro
 
 
 def construir_url_busqueda(isbn_libro: str) -> str:

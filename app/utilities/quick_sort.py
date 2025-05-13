@@ -1,16 +1,18 @@
 from random import randrange
-from typing import Callable, TypeVar, List
+from typing import Callable, TypeVar, List, Any
 
 
 T = TypeVar("T")  # Tipo genérico para la colección
 
 
-def quick_sort(coleccion: List[T], key: Callable[[T], any] = None) -> List[T]:
+from typing import Optional
+
+def quick_sort(coleccion: List[T], key: Optional[Callable[[T], Any]] = None) -> List[T]:
     """Implementación del algoritmo de ordenamiento QuickSort con soporte para key function.
 
     Args:
         coleccion (List[T]): Colección de elementos a ordenar.
-        key (Callable[[T], any], optional): Función que extrae un valor para comparación.
+        key (Callable[[T], Any], optional): Función que extrae un valor para comparación.
 
     Returns:
         List[T]: La misma colección pero ordenada.

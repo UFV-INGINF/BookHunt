@@ -1,9 +1,9 @@
-from services.agapea import scrape_agapea
-from services.amazon import scrape_amazon
-from services.iberlibro import scrape_iberlibro
-from services.corte_ingles import scrape_el_corte_ingles
-from services.la_casa_del_libro import scrape_casa_del_libro
-from utilities.formatear_isbn import formatear_isbn
+from app.services.agapea import scrape_agapea
+from app.services.amazon import scrape_amazon
+from app.services.corte_ingles import scrape_el_corte_ingles
+from app.services.iberlibro import scrape_iberlibro
+from app.services.la_casa_del_libro import scrape_casa_del_libro
+from app.utilities.formatear_isbn import formatear_isbn
 
 
 def scrapear_libros(isbn_libro):

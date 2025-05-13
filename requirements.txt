@@ -1,6 +1,5 @@
 flask
 requests
 playwright
-requests
 bs4
-aws-requests-auth
+gunicorn

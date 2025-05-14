@@ -2,7 +2,9 @@ from random import randrange
 from typing import Callable, TypeVar, List, Any
 
 
-T = TypeVar("T")  # Tipo genérico para la colección
+from typing import SupportsFloat
+
+T = TypeVar("T", bound=SupportsFloat)  # Tipo genérico restringido a soportar conversión a float
 
 
 from typing import Optional
@@ -35,10 +37,10 @@ def quick_sort(coleccion: List[T], key: Optional[Callable[[T], Any]] = None) -> 
 
     # Dividir la colección según la key function
     menores = [
-        item for item in coleccion_ordenar if get_value(item) <= get_value(pivote)
+        item for item in coleccion_ordenar if float(get_value(item)) <= float(get_value(pivote))
     ]
     mayores = [
-        item for item in coleccion_ordenar if get_value(item) > get_value(pivote)
+        item for item in coleccion_ordenar if float(get_value(item)) > float(get_value(pivote))
     ]
 
     # Recursión y combinación

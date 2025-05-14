@@ -1,54 +1,101 @@
-from playwright.sync_api import sync_playwright
-from app.models.libro import Libro  # si tienes tu clase Libro
+import requests
+from app.models.libro import Libro
 
-def scrape_carrefour_desde_web(isbn):
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
 
-        isbn = isbn.replace("-", "").strip()
-        search_url = f"https://www.carrefour.es/?search={isbn}"
-        page.goto(search_url)
-        page.wait_for_timeout(4000)
+def construir_url_busqueda(isbn_libro: str) -> str:
+    """
+    Construye la URL para la API de Casa del Libro con el ISBN especificado.
 
-        try:
-            producto = page.query_selector("a.product-card-title")
-            if not producto:
-                print("⚠️ No se encontró el producto.")
-                browser.close()
-                return []
+    Args:
+        isbn_libro (str): ISBN del libro a buscar.
 
-            titulo = producto.inner_text().strip()
-            enlace = producto.get_attribute("href")
-            if enlace and not enlace.startswith("http"):
-                enlace = "https://www.carrefour.es" + enlace
+    Returns:
+        str: URL completa para la API de Casa del Libro.
+    """
 
-            if enlace:
-                page.goto(enlace)
-            else:
-                raise ValueError("El enlace es None y no se puede navegar a él.")
-            page.wait_for_timeout(3000)
+    try:
+        isbn_int = int(isbn_libro)
 
-            precio_raw = page.query_selector("span.price")
-            precio = float(precio_raw.inner_text().replace("€", "").replace(",", ".").strip()) if precio_raw else 0.0
-            gastos_envio = 0.0 if precio >= 19 else 2.99
+    except ValueError:
+        print(isbn_libro)
+        print("El ISBN debe ser un número entero.")
+        return ""
 
-            libro = Libro(
-                nombre=titulo,
-                isbn=isbn,
-                tienda="Carrefour",
-                precio=precio,
-                gastos_envio=gastos_envio,
-                enlace=enlace,
-                fecha_entrega="1 a 3 días"
-            )
+    return f"https://api.empathy.co/search/v1/query/cdl/isbnsearch?internal=true&query={isbn_int}&origin=search_box:none&start=0&rows=24&instance=cdl&lang=es&scope=desktop&currency=EUR&store=ES"
 
-            browser.close()
-            return [libro]
 
-        except Exception as e:
-            print(f"❌ Error: {e}")
-            browser.close()
-            return []
+def  scrape_casa_del_libro(isbn_libro):
+    """Scraper de Casa del Libro utilizando requests.
 
-scrape_carrefour_desde_web("9788418174070")
+    Args:
+        isbn_libro: ISBN del libro a buscar.
+
+    Returns:
+        list: Lista de objetos Libro con la información extraída.
+    """
+
+    libros = []
+
+    isbn_libro = isbn_libro.replace("-", "")
+    isbn_libro = isbn_libro.replace(" ", "")
+
+    url_libro = construir_url_busqueda(isbn_libro)
+
+    if url_libro == "":
+        print("Error al construir la URL.")
+        return libros
+
+    response = requests.get(
+        url_libro
+    )
+
+    dict_response = response.json()
+    with open("response.json", "w") as f:
+        f.write(response.text)
+
+    if dict_response["catalog"]["numFound"] == 0:
+        print("No se han encontrado resultados.")
+        return None
+
+    book_info = dict_response["catalog"]["content"][0]
+
+    if response.status_code != 200:
+        print(f"Error: {response.status_code}")
+        return libros
+
+    titulo = book_info["__name"].title()
+    isbn_libro_scrap = book_info["ean"]
+    precio = book_info["price"]["current"]
+    enlace = book_info["__url"]
+
+    if isbn_libro != isbn_libro_scrap:
+        print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")
+        return libros
+
+    gastos_envio = 0.0
+
+    # En la casa del libro, los gastos de envío son 0 si el precio es mayor a 19
+    if precio < 19:
+        gastos_envio = 2.99
+
+    print(book_info["__name"].title())
+    print(book_info["ean"])
+    print(book_info["price"]["current"])
+    print(book_info["authors"][0])
+
+    libro = Libro(
+        nombre = titulo,
+        autor= book_info["authors"][0],
+        isbn = isbn_libro_scrap,
+        tienda = "Casa del Libro",
+        precio = precio,
+        gastos_envio = gastos_envio,
+        enlace = enlace,
+        fecha_entrega = "1 a 3 días"
+    )
+
+    libros.append(libro)
+
+    return libros
+
+scrape_casa_del_libro("9788478884452")

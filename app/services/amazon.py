@@ -2,7 +2,7 @@ from datetime import datetime
 
 import requests
 from bs4 import BeautifulSoup
-from models.libro import Libro
+from app.models.libro import Libro
 
 
 headers = {

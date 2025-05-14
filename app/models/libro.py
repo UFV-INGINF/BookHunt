@@ -2,6 +2,7 @@ class Libro:
     def __init__(
         self,
         nombre="Error de Carga",
+        autor="Desconocido",
         tienda="Error de Carga",
         precio=0.0,
         isbn=0,
@@ -10,6 +11,7 @@ class Libro:
         fecha_entrega="0 días",
     ):
         self.nombre = nombre
+        self.autor = autor
         self.isbn = isbn
         self.tienda = tienda
         self.precio = precio

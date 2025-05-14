@@ -1,5 +1,5 @@
 import requests
-from models.libro import Libro
+from app.models.libro import Libro
 
 
 def construir_url_busqueda(isbn_libro: str) -> str:
@@ -50,20 +50,22 @@ def  scrape_casa_del_libro(isbn_libro):
     )
 
     dict_response = response.json()
+
+    if dict_response["catalog"]["numFound"] == 0:
+        print("No se han encontrado resultados.")
+        return libros
+
     book_info = dict_response["catalog"]["content"][0]
 
     if response.status_code != 200:
         print(f"Error: {response.status_code}")
         return libros
 
-    if dict_response["catalog"]["numFound"] == 0:
-        print("No se han encontrado resultados.")
-        return libros
-
     titulo = book_info["__name"].title()
     isbn_libro_scrap = book_info["ean"]
     precio = book_info["price"]["current"]
     enlace = book_info["__url"]
+    autor = book_info["authors"][0]
 
     if isbn_libro != isbn_libro_scrap:
         print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")
@@ -78,9 +80,11 @@ def  scrape_casa_del_libro(isbn_libro):
     print(book_info["__name"].title())
     print(book_info["ean"])
     print(book_info["price"]["current"])
+    print(book_info["authors"][0])
 
     libro = Libro(
         nombre = titulo,
+        autor= autor,
         isbn = isbn_libro_scrap,
         tienda = "Casa del Libro",
         precio = precio,

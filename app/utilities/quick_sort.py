@@ -1,16 +1,20 @@
 from random import randrange
-from typing import Callable, TypeVar, List
+from typing import Callable, TypeVar, List, Any
 
 
-T = TypeVar("T")  # Tipo genérico para la colección
+from typing import SupportsFloat
+
+T = TypeVar("T", bound=SupportsFloat)  # Tipo genérico restringido a soportar conversión a float
 
 
-def quick_sort(coleccion: List[T], key: Callable[[T], any] = None) -> List[T]:
+from typing import Optional
+
+def quick_sort(coleccion: List[T], key: Optional[Callable[[T], Any]] = None) -> List[T]:
     """Implementación del algoritmo de ordenamiento QuickSort con soporte para key function.
 
     Args:
         coleccion (List[T]): Colección de elementos a ordenar.
-        key (Callable[[T], any], optional): Función que extrae un valor para comparación.
+        key (Callable[[T], Any], optional): Función que extrae un valor para comparación.
 
     Returns:
         List[T]: La misma colección pero ordenada.
@@ -33,10 +37,10 @@ def quick_sort(coleccion: List[T], key: Callable[[T], any] = None) -> List[T]:
 
     # Dividir la colección según la key function
     menores = [
-        item for item in coleccion_ordenar if get_value(item) <= get_value(pivote)
+        item for item in coleccion_ordenar if float(get_value(item)) <= float(get_value(pivote))
     ]
     mayores = [
-        item for item in coleccion_ordenar if get_value(item) > get_value(pivote)
+        item for item in coleccion_ordenar if float(get_value(item)) > float(get_value(pivote))
     ]
 
     # Recursión y combinación

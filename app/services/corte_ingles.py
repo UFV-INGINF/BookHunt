@@ -1,5 +1,5 @@
 from playwright.sync_api import sync_playwright
-from models.libro import Libro
+from app.models.libro import Libro
 
 
 def scrape_el_corte_ingles(isbn_libro):

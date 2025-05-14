@@ -3,8 +3,6 @@ import os
 import requests
 from flask import Flask, jsonify, render_template, request
 from app.scraper import scrapear_libros
-from app.utilities.quick_sort import ordenar_libros
-
 
 GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes?q="
 
@@ -21,8 +19,7 @@ def index():
             libros = scrapear_libros(isbn)
             libros = sorted(libros, key=lambda libro: libro.total)
 
-
-    return render_template("index.html", libros=libros, scroll_to_buscador=True)
+    return render_template("index.html", libros = libros, scroll_to_buscador=True)
 
 
 @app.route("/buscar_fragmento", methods=["POST"])

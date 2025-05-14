@@ -511,9 +511,15 @@
 
   <!-- En tu index.html -->
   <script>
+    // Variable que Flask insertará como true o false
+    const scrollToBuscador = {{ 'true' if scroll_to_buscador else 'false' | tojson }};
+
     window.addEventListener("load", () => {
-      if (window.location.pathname === "/" && "{{ scroll_to_buscador }}" === "true") {
-        location.hash = "#buscador";
+      if (window.location.pathname === "/" && scrollToBuscador) {
+        const target = document.getElementById("buscador");
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
       }
     });
   </script>

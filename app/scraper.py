@@ -12,13 +12,16 @@ def scrapear_libros(isbn_libro):
     isbn_libro = formatear_isbn(isbn_libro)
 
     respuesta_casa_del_libro = scrape_casa_del_libro(isbn_libro)
-    if respuesta_casa_del_libro:
+    if isinstance(respuesta_casa_del_libro, list):
         libros += respuesta_casa_del_libro
+
+    respuesta_corte_ingles = scrape_el_corte_ingles(isbn_libro)
+    if isinstance(respuesta_corte_ingles, list):
+        libros += respuesta_corte_ingles
 
     # libros += scrape_iberlibro(isbn_libro)
     # libros += scrape_agapea(isbn_libro)
     # libros += scrape_amazon(isbn_libro)
-    # libros += scrape_el_corte_ingles(isbn_libro)
     return libros
 
 

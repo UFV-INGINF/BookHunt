@@ -1,53 +1,112 @@
-from playwright.sync_api import sync_playwright
+import requests
+from decimal import Decimal
+
 from app.models.libro import Libro
 
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    "Accept": "application/json",
+    "Accept-Language": "es-ES,es;q=0.9",
+    "Referer": "https://www.elcorteingles.es/",
+    "Origin": "https://www.elcorteingles.es"
+}
 
-def scrape_el_corte_ingles(isbn_libro):
-    """Scraper de El Corte Inglés utilizando Playwright."""
+def construir_url_busqueda(isbn_libro: str) -> str:
+    """
+    Construye la URL para la API de El Corte Inglés con el ISBN especificado.
+
+    Args:
+        isbn_libro (str): ISBN del libro a buscar.
+
+    Returns:
+        str: URL completa para la API de El Corte Inglés.
+    """
+
+    try:
+        isbn_int = int(isbn_libro)
+
+    except ValueError:
+        print(isbn_libro)
+        print("El ISBN debe ser un número entero.")
+        return ""
+
+    return f"https://www.elcorteingles.es/api/firefly/vuestore/new-search/1/?s={isbn_int}&stype=text_box_multi&isHome=false&isBookSearch=true"
+
+
+def  scrape_el_corte_ingles(isbn_libro):
+    """Scraper de el Corte Ingles utilizando requests.
+
+    Args:
+        isbn_libro: ISBN del libro a buscar.
+
+    Returns:
+        list: Lista de objetos Libro con la información extraída.
+    """
+
     libros = []
-    isbn_libro = isbn_libro.replace("-", "")  # Por si acaso viene con guiones
-    url = f"https://www.elcorteingles.es/libros/search-nwx/1/?s={isbn_libro}&stype=text_box"
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        page = browser.new_page()
-        try:
+    isbn_libro = isbn_libro.replace("-", "")
+    isbn_libro = isbn_libro.replace(" ", "")
 
-            page.goto(url, timeout=60000)
-            page.wait_for_selector("div.product_preview-ppal", timeout=10000)
+    url_libro = construir_url_busqueda(isbn_libro)
 
-            # Coge el primer resultado
-            nombre_element = page.query_selector("a.product_preview-title")
-            precio_element = page.query_selector("span.price-sale")
-            link_element = url
+    if url_libro == "":
+        print("Error al construir la URL.")
+        return libros
 
-            if nombre_element and precio_element and link_element:
-                nombre = nombre_element.inner_text().strip()
-                precio_text = precio_element.inner_text().strip()
-                enlace = link_element
+    response = requests.get(
+        url_libro, headers=headers, timeout=10
+    )
 
-                precio = float(
-                    precio_text.replace("€", "").replace(",", ".").strip()
-                )
+    print("Request hecho")
 
-                libro = Libro(
-                    nombre=nombre,
-                    isbn=isbn_libro,
-                    tienda="El Corte Inglés",
-                    precio=precio,
-                    gastos_envio=0.0,  # No lo indican fácil
-                    enlace=enlace,
-                    fecha_entrega= "No hay información",
-                )
-                libros.append(libro)
-            else:
-                print(f"No se encontró libro para ISBN {isbn_libro} en El Corte Inglés.")
+    if response.status_code != 200:
+        print(f"Error: {response.status_code}")
+        return NotImplementedError
 
-        except Exception as e:
-            print(f"Error al scrapear El Corte Inglés: {e}")
+    dict_response = response.json()
+    with open("response.json", "w") as f:
+        f.write(response.text)
 
-        finally:
-            browser.close()
+    if dict_response["data"]["pagination"]["_total"] == 0:
+        print("No se han encontrado resultados.")
+        return None
+
+    book_info = dict_response["data"]["paginatedDatalayer"]["products"][0]
+
+    if book_info["category"][0].lower() != "libros":
+        print(f"Los resultados no son libros.")
+        return None
+
+    titulo = book_info["name"].title()
+
+    autor = "Desconocido"
+
+    if dict_response["data"]["products"][0]["brand"]["type"].lower() == "author":
+        autor = dict_response["data"]["products"][0]["brand"]["name"]
+
+    isbn_libro_scrap = book_info["gtin"]
+    precio = book_info["price"]["f_price"]
+    enlace = dict_response["data"]["products"][0]["_base_url"]
+
+    if isbn_libro != isbn_libro_scrap:
+        print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")
+        return libros
+
+    # En el corte ingles no lo indican, así que lo dejamos a 0
+    gastos_envio = 0.0
+
+    libro = Libro(
+        nombre = titulo,
+        autor = autor,
+        isbn = isbn_libro_scrap,
+        tienda = "El Corte Inglés",
+        precio = Decimal(str(precio)),
+        gastos_envio = gastos_envio,
+        enlace = enlace,
+        fecha_entrega = "1 a 3 días"
+    )
+
+    libros.append(libro)
 
     return libros
-

@@ -216,3 +216,6 @@ results/
 
 # MACOS
 **/.DS_Store
+
+# Ficheros de prueba
+**/prueba.py

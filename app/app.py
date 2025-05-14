@@ -1,12 +1,19 @@
 import os
 
 import requests
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, redirect, request
 from app.scraper import scrapear_libros
 
 GOOGLE_BOOKS_API_URL = "https://www.googleapis.com/books/v1/volumes?q="
 
 app = Flask(__name__)
+
+
+@app.before_request
+def enforce_https():
+    if not request.is_secure and request.headers.get("X-Forwarded-Proto", "http") != "https":
+        url = request.url.replace("http://", "https://", 1)
+        return redirect(url, code=301)
 
 
 @app.route("/", methods=["GET", "POST"])  # Vistas, en este caso raíz
@@ -55,10 +62,11 @@ def buscar_por_fragmento():
 
     return render_template("index.html", books=books)
 
+
 if __name__ == "__main__":
-    # port = int(os.environ.get("PORT", 5000))  # Usamos el puerto que Heroku define
-    # app.run(debug=False, host='0.0.0.0', port=port)
+    port = int(os.environ.get("PORT", 8080))  # Usamos el puerto que Heroku define
+    app.run(debug=False, host='0.0.0.0', port=port)
 
     # Configuración debug
-    port = int(os.environ.get("PORT", 8080))
-    app.run(debug=True, host='0.0.0.0', port=port)
+    # port = int(os.environ.get("PORT", 8080))
+    # app.run(debug=True, host='0.0.0.0', port=port)

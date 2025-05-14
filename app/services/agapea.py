@@ -1,7 +1,9 @@
+from decimal import Decimal
+
 import requests
 from bs4 import BeautifulSoup
-from app.models.libro import Libro
 
+from app.models.libro import Libro
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
@@ -85,7 +87,7 @@ def scrape_agapea(isbn_libro):
             nombre=nombre,
             isbn=isbn_libro,
             tienda="Agapea",
-            precio=precio,
+            precio=Decimal(str(precio)),
             gastos_envio=gastos_envio,
             enlace=url,
             fecha_entrega=dias_entrega,

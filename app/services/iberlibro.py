@@ -1,5 +1,8 @@
+from decimal import Decimal
+
 import requests
 from bs4 import BeautifulSoup
+
 from app.models.libro import Libro
 
 
@@ -69,7 +72,7 @@ def scrape_iberlibro(isbn_libro):
                 nombre=nombre,
                 isbn=isbn_libro,
                 tienda="Iberlibro",
-                precio=precio,
+                precio=Decimal(str(precio)),
                 gastos_envio=gastos_envio,
                 enlace=enlace,
                 fecha_entrega="No hay información",

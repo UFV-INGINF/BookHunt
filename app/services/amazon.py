@@ -1,9 +1,10 @@
 from datetime import datetime
+from decimal import Decimal
 
 import requests
 from bs4 import BeautifulSoup
-from app.models.libro import Libro
 
+from app.models.libro import Libro
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36",
@@ -108,15 +109,19 @@ def scrape_amazon(isbn):
         else:
             print("No se encontraron spans con la clase necesaria")
 
+
+
         if titulo and precio_entero and link:
+            enlace = "https://www.amazon.es" + str(link["href"])
+            
             resultados.append(
                 Libro(
                     nombre=titulo.text.strip(),
                     isbn=isbn,
                     tienda="Amazon",
-                    precio=precio,
+                    precio=Decimal(str(precio)),
                     gastos_envio=gastos_envio,
-                    enlace= str(link["href"]),
+                    enlace = enlace,
                     fecha_entrega=f"{dias_restantes} días",
                 )
             )

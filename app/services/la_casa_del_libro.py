@@ -1,4 +1,7 @@
+from decimal import Decimal
+
 import requests
+
 from app.models.libro import Libro
 
 
@@ -49,6 +52,10 @@ def  scrape_casa_del_libro(isbn_libro):
         url_libro
     )
 
+    if response.status_code != 200:
+        print(f"Error: {response.status_code}")
+        return libros
+
     dict_response = response.json()
 
     if dict_response["catalog"]["numFound"] == 0:
@@ -56,10 +63,6 @@ def  scrape_casa_del_libro(isbn_libro):
         return libros
 
     book_info = dict_response["catalog"]["content"][0]
-
-    if response.status_code != 200:
-        print(f"Error: {response.status_code}")
-        return libros
 
     titulo = book_info["__name"].title()
     isbn_libro_scrap = book_info["ean"]
@@ -77,17 +80,12 @@ def  scrape_casa_del_libro(isbn_libro):
     if precio < 19:
         gastos_envio = 2.99
 
-    print(book_info["__name"].title())
-    print(book_info["ean"])
-    print(book_info["price"]["current"])
-    print(book_info["authors"][0])
-
     libro = Libro(
         nombre = titulo,
-        autor= autor,
+        autor = autor,
         isbn = isbn_libro_scrap,
         tienda = "Casa del Libro",
-        precio = precio,
+        precio = Decimal(str(precio)),
         gastos_envio = gastos_envio,
         enlace = enlace,
         fecha_entrega = "1 a 3 días"

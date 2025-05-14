@@ -3,7 +3,7 @@ name: Deploy to Heroku
 on:
   push:
     branches:
-      - main  # despliega cuando haces push a main
+      - main
 
 jobs:
   deploy:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Clonamos todo el historial para evitar el shallow push
 
       - name: Set up Python
         uses: actions/setup-python@v4

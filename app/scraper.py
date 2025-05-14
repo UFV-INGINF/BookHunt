@@ -19,9 +19,18 @@ def scrapear_libros(isbn_libro):
     if isinstance(respuesta_corte_ingles, list):
         libros += respuesta_corte_ingles
 
-    # libros += scrape_iberlibro(isbn_libro)
-    # libros += scrape_agapea(isbn_libro)
-    # libros += scrape_amazon(isbn_libro)
+    respuesta_iberlibro = scrape_iberlibro(isbn_libro)
+    if isinstance(respuesta_iberlibro, list):
+        libros += respuesta_iberlibro
+
+    respuesta_agapea = scrape_agapea(isbn_libro)
+    if isinstance(respuesta_agapea, list):
+        libros += respuesta_agapea
+
+    respuesta_amazon = scrape_amazon(isbn_libro)
+    if isinstance(respuesta_amazon, list):
+        libros += respuesta_amazon
+        
     return libros
 
 

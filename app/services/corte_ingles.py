@@ -1,5 +1,6 @@
-import requests
 from decimal import Decimal
+
+import requests
 
 from app.models.libro import Libro
 
@@ -10,6 +11,7 @@ headers = {
     "Referer": "https://www.elcorteingles.es/",
     "Origin": "https://www.elcorteingles.es"
 }
+
 
 def construir_url_busqueda(isbn_libro: str) -> str:
     """

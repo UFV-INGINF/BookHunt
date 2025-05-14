@@ -1,5 +1,6 @@
-import requests
 from decimal import Decimal
+
+import requests
 
 from app.models.libro import Libro
 

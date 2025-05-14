@@ -213,3 +213,6 @@ results/
 *.csv
 *.xlsx
 *.db
+
+# MACOS
+**/.DS_Store

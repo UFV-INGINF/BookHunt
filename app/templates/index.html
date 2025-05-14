@@ -227,7 +227,7 @@
                 </div>
                 <div class="container-info-libro">
                   <h5>{{ libro.nombre}}</h5>
-                  <p>Autor Libro</p>
+                  <p>Autor: {{libro.autor}}</p>
                   <p>ISBN: {{ libro.isbn }}</p>
                 </div>
                 <div class="container-precios">
@@ -508,6 +508,15 @@
 
   <script src="https://kit.fontawesome.com/4d27b876b2.js" crossorigin="anonymous"></script>
   <script src="../static/scripts/carrito.js"></script>
+
+  <!-- En tu index.html -->
+  <script>
+    window.addEventListener("load", () => {
+      if (window.location.pathname === "/" && "{{ scroll_to_buscador }}" === "true") {
+        location.hash = "#buscador";
+      }
+    });
+  </script>
 
   <script>
     // Para ambos formularios

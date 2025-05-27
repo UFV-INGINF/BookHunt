@@ -1,5 +1,8 @@
-import httpx
 from decimal import Decimal
+
+import httpx
+import secrets
+
 from app.models.libro import Libro
 
 headers = {
@@ -7,10 +10,9 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:138.0) Gecko/20100101 Firefox/138.0",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en,en-US;q=0.5",
-    "Accept-Encoding": "gzip, deflate, br, zstd",
     "DNT": "1",
     "Connection": "keep-alive",
-    "Cookie": "store=eciStore; locale=es_ES; session_id=f11d2760811030e4d5704bbf70a4880196383b6aa56e95cadb56bd4ec5c586c8; centre=NULL; express=F; 400ec9b380b445511157ca42ac2aef6a=79560719f16e45dca8075a19efb8d87b; ff_checkout_akamai=ff_checkout_akamai; ff_checkout=1; source=elastic; AKA_A2=A; _bman=bfcc0c2e86c2f181c09538f0625ae157; _abck=061BAF9AF7CD8AC8774D991923E304F5~-1~YAAQwJhkX1rT5sOWAQAALVwOEQ0ksZtSQ9Q9",
+    "Cookie": f"store=eciStore; locale=es_ES; session_id=f{secrets.token_hex(32)};",
     "Upgrade-Insecure-Requests": "1",
     "Sec-Fetch-Dest": "document",
     "Sec-Fetch-Mode": "navigate",
@@ -58,11 +60,9 @@ def  scrape_el_corte_ingles(isbn_libro):
 
     url_libro = construir_url_busqueda(isbn_libro)
 
-    print(f"URL: {url_libro}")
-
     if url_libro == "":
         print("Error al construir la URL.")
-        return libros
+        return None
 
     try:
 
@@ -71,12 +71,9 @@ def  scrape_el_corte_ingles(isbn_libro):
 
         if response.status_code != 200:
             print(f"Error: {response.status_code}")
-            return NotImplementedError
+            return None
 
         dict_response = response.json()
-
-        with open("response.json", "w") as f:
-            f.write(response.text)
 
         if dict_response["data"]["pagination"]["_total"] == 0:
             print("No se han encontrado resultados.")
@@ -101,7 +98,7 @@ def  scrape_el_corte_ingles(isbn_libro):
 
         if isbn_libro != isbn_libro_scrap:
             print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")
-            return libros
+            return None
 
         # En el corte ingles no lo indican, así que lo dejamos a 0
         gastos_envio = 0.0
@@ -113,7 +110,7 @@ def  scrape_el_corte_ingles(isbn_libro):
             tienda = "El Corte Inglés",
             precio = Decimal(str(precio)),
             gastos_envio = gastos_envio,
-            enlace = enlace,
+            enlace = enlace [:-1] + "?parentCategoryId=999.54302013&color=Sin+especificar",
             fecha_entrega = "1 a 3 días"
         )
 

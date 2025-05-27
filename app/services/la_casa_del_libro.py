@@ -46,7 +46,7 @@ def  scrape_casa_del_libro(isbn_libro):
 
     if url_libro == "":
         print("Error al construir la URL.")
-        return libros
+        return None
 
     try:
         response = requests.get(
@@ -61,7 +61,7 @@ def  scrape_casa_del_libro(isbn_libro):
 
         if dict_response["catalog"]["numFound"] == 0:
             print("No se han encontrado resultados.")
-            return libros
+            return None
 
         book_info = dict_response["catalog"]["content"][0]
 
@@ -73,7 +73,7 @@ def  scrape_casa_del_libro(isbn_libro):
 
         if isbn_libro != isbn_libro_scrap:
             print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")
-            return libros
+            return None
 
         gastos_envio = 0.0
 
@@ -82,8 +82,8 @@ def  scrape_casa_del_libro(isbn_libro):
             gastos_envio = 2.99
 
         libro = Libro(
-            nombre = titulo,
-            autor = autor,
+            nombre = titulo.title(),
+            autor = autor.title(),
             isbn = isbn_libro_scrap,
             tienda = "Casa del Libro",
             precio = Decimal(str(precio)),

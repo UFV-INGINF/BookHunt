@@ -219,3 +219,7 @@ results/
 
 # Ficheros de prueba
 **/prueba.py
+
+# Ficheros de configuración
+cert.pem
+key.pem

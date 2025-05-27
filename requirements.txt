@@ -3,3 +3,4 @@ requests
 playwright
 bs4
 gunicorn
+httpx

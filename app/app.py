@@ -22,11 +22,16 @@ def index():
 
     if request.method == "POST":
         isbn = request.form.get("isbn_libro", "").strip()
+
         if isbn:
             libros = scrapear_libros(isbn)
             libros = sorted(libros, key=lambda libro: libro.total)
 
-    return render_template("index.html", libros = libros, scroll_to_buscador=True)
+        return render_template("index.html", libros = libros, scroll_to_buscador=True)
+
+
+
+    return render_template("index.html", libros = libros, scroll_to_buscador=False)
 
 
 @app.route("/buscar_fragmento", methods=["POST"])

@@ -29,7 +29,7 @@ def extraer_tiempo_entrega_agapea(soup):
     return None
 
 
-def scrape_agapea(isbn_libro_scrap):
+def scrape_agapea(isbn_libro):
     """Scraper de agapea utilizando requests.
 
     Args:
@@ -39,10 +39,10 @@ def scrape_agapea(isbn_libro_scrap):
         list: Lista de objetos Libro con la información extraída.
     """
 
-    isbn_libro_scrap = isbn_libro_scrap.replace("-", "")
-    isbn_libro_scrap = isbn_libro_scrap.replace(" ", "")
+    isbn_libro = isbn_libro.replace("-", "")
+    isbn_libro = isbn_libro.replace(" ", "")
 
-    url = f"https://www.agapea.com/buscar/buscador.php?texto={isbn_libro_scrap}"
+    url = f"https://www.agapea.com/buscar/buscador.php?texto={isbn_libro}"
 
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36"
@@ -66,9 +66,9 @@ def scrape_agapea(isbn_libro_scrap):
         )
 
         isbn_th = soup.find('th', string='ISBN')
-        isbn_libro = isbn_th.find_next_sibling('td').get_text(strip=True)
-        isbn_libro = isbn_libro.replace("-", "")
-        isbn_libro = isbn_libro.replace(" ", "")
+        isbn_libro_scrap = isbn_th.find_next_sibling('td').get_text(strip=True)
+        isbn_libro_scrap = isbn_libro_scrap.replace("-", "")
+        isbn_libro_scrap = isbn_libro_scrap.replace(" ", "")
 
         if isbn_libro != isbn_libro_scrap:
             print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")

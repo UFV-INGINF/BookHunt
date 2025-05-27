@@ -1,12 +1,24 @@
 from decimal import Decimal
 
-import requests
+import httpx
+import secrets
 
 from app.models.libro import Libro
 
 headers = {
-    "Referer": "https://www.elcorteingles.es/",
-    "Origin": "https://www.elcorteingles.es"
+    "Host": "www.elcorteingles.es",
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:138.0) Gecko/20100101 Firefox/138.0",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en,en-US;q=0.5",
+    "DNT": "1",
+    "Connection": "keep-alive",
+    "Cookie": f"store=eciStore; locale=es_ES; session_id=f{secrets.token_hex(32)};",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Sec-Fetch-User": "?1",
+    "Sec-GPC": "1"
 }
 
 def construir_url_busqueda(isbn_libro: str) -> str:
@@ -50,22 +62,18 @@ def  scrape_el_corte_ingles(isbn_libro):
 
     if url_libro == "":
         print("Error al construir la URL.")
-        return libros
+        return None
 
     try:
-        response = requests.get(
-            url_libro, headers=headers, timeout=10
-        )
 
-        print("Request hecho")
+        with httpx.Client(http2=True, headers=headers, timeout=20) as client:
+            response = client.get(url_libro)
 
         if response.status_code != 200:
             print(f"Error: {response.status_code}")
-            return NotImplementedError
+            return None
 
         dict_response = response.json()
-        with open("response.json", "w") as f:
-            f.write(response.text)
 
         if dict_response["data"]["pagination"]["_total"] == 0:
             print("No se han encontrado resultados.")
@@ -90,30 +98,50 @@ def  scrape_el_corte_ingles(isbn_libro):
 
         if isbn_libro != isbn_libro_scrap:
             print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")
-            return libros
+            return None
 
         # En el corte ingles no lo indican, así que lo dejamos a 0
         gastos_envio = 0.0
 
         libro = Libro(
-            nombre = titulo,
-            autor = autor,
+            nombre = titulo.title(),
+            autor = autor.title(),
             isbn = isbn_libro_scrap,
             tienda = "El Corte Inglés",
             precio = Decimal(str(precio)),
             gastos_envio = gastos_envio,
-            enlace = enlace,
+            enlace = enlace [:-1] + "?parentCategoryId=999.54302013&color=Sin+especificar",
             fecha_entrega = "1 a 3 días"
         )
 
         libros.append(libro)
 
-    except requests.exceptions.RequestException as e:
-        print(f"Error de conexión: {e}")
+    except httpx.ConnectTimeout:
+        print("Error: Tiempo de conexión agotado.")
+        return None
+
+    except httpx.ReadTimeout:
+        print("Error: Tiempo de lectura agotado.")
+        return None
+
+    except httpx.TimeoutException:
+        print("Error general de timeout.")
+        return None
+
+    except httpx.RequestError as e:
+        print(f"Error en la solicitud: {e}")
+        return None
+
+    except httpx.HTTPStatusError as e:
+        print(f"Error HTTP {e.response.status_code}: {e.response.text[:200]}")
+        return None
+
+    except httpx.StreamError as e:
+        print(f"Error en el stream: {e}")
         return None
 
     except Exception as e:
-        print(f"Error inesperado: {e}")
+        print(f"Error inesperado: {type(e).__name__}: {e}")
         return None
 
 

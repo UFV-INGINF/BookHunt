@@ -113,7 +113,7 @@ def scrape_amazon(isbn):
 
         if titulo and precio_entero and link:
             enlace = "https://www.amazon.es" + str(link["href"])
-            
+
             resultados.append(
                 Libro(
                     nombre=titulo.text.strip(),

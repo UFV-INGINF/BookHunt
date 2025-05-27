@@ -10,7 +10,6 @@ headers = {
     "Accept-Language": "es-ES,es;q=0.9",
 }
 
-
 def extraer_tiempo_entrega_agapea(soup):
     """
     Extrae el tiempo de entrega de la página de Agapea.
@@ -31,7 +30,18 @@ def extraer_tiempo_entrega_agapea(soup):
 
 
 def scrape_agapea(isbn_libro):
-    """Scraper de Agapea utilizando requests y BeautifulSoup."""
+    """Scraper de agapea utilizando requests.
+
+    Args:
+        isbn_libro: ISBN del libro a buscar.
+
+    Returns:
+        list: Lista de objetos Libro con la información extraída.
+    """
+
+    isbn_libro = isbn_libro.replace("-", "")
+    isbn_libro = isbn_libro.replace(" ", "")
+
     url = f"https://www.agapea.com/buscar/buscador.php?texto={isbn_libro}"
 
     headers = {
@@ -44,7 +54,7 @@ def scrape_agapea(isbn_libro):
 
         if response.status_code != 200:
             print(f"Error al acceder a Agapea (status code: {response.status_code})")
-            return []
+            return None
 
         soup = BeautifulSoup(response.text, "html.parser")
         libros = []
@@ -53,6 +63,20 @@ def scrape_agapea(isbn_libro):
         nombre_element = soup.select_one("h1")
         nombre = (
             nombre_element.text.strip() if nombre_element else "Nombre no disponible"
+        )
+
+        isbn_th = soup.find('th', string='ISBN')
+        isbn_libro_scrap = isbn_th.find_next_sibling('td').get_text(strip=True)
+        isbn_libro_scrap = isbn_libro_scrap.replace("-", "")
+        isbn_libro_scrap = isbn_libro_scrap.replace(" ", "")
+
+        if isbn_libro != isbn_libro_scrap:
+            print(f"El ISBN {isbn_libro} no coincide con el ISBN {isbn_libro_scrap}.")
+            return None
+
+        autor_elemento = soup.select_one('h2.hidden-phone a.author')
+        autor = (
+            autor_elemento.text.strip() if autor_elemento else "Desconcoido"
         )
 
         # Extraer precio del libro
@@ -84,8 +108,9 @@ def scrape_agapea(isbn_libro):
 
         # Crear objeto Libro
         libro = Libro(
-            nombre=nombre,
-            isbn=isbn_libro,
+            nombre=nombre.title(),
+            autor=autor.title(),
+            isbn=int(isbn_libro),
             tienda="Agapea",
             precio=Decimal(str(precio)),
             gastos_envio=gastos_envio,
@@ -94,11 +119,10 @@ def scrape_agapea(isbn_libro):
         )
         libros.append(libro)
 
+        print(f"Libro encontrado en Agapea: {libro.nombre} - {libro.isbn} - {libro.precio}€")
+
         return libros
 
     except Exception as e:
         print(f"Error en Agapea: {e}")
-        import traceback
-
-        traceback.print_exc()
-        return []
+        return None
